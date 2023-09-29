@@ -9,16 +9,16 @@
                     <div class="card-body p-3">
                         <div class="row">
                             <div class="col-8">
+                            <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                                <p class="text-sm mb-0 text-uppercase font-weight-bold">Publicaciones</p>
+                                @foreach ($index['publicaciones'] as $p)
                                     <h5 class="font-weight-bolder">
-                                        $53,000
+                                    <li>{{ $p->titulo }} - {{ $p->descripcion }} (Precio: {{ $p->precio }})</li>
                                     </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                        since yesterday
-                                    </p>
+                                @endforeach
                                 </div>
+                            </div>
                             </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
@@ -33,18 +33,29 @@
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
-                            <div class="col-8">
-                                <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                                    <h5 class="font-weight-bolder">
-                                        2,300
-                                    </h5>
-                                    <p class="mb-0">
-                                        <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                        since last week
-                                    </p>
-                                </div>
-                            </div>
+                            <<div style="background:0f1f1f1;widt:45%; height:150px">
+    <h5>Crear Anuncio</h5>
+    <form action="{{ route('store') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripcion</label>
+            <input type="text" id="descripcion" name="descripcion" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio</label>
+            <input type="number" id="precio" name="precio" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
                                     <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
