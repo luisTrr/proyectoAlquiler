@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class publicaciones extends Model
 {
+    public $timestamps = false;
     use HasFactory;
     protected $fillable = [
         'titulo',
