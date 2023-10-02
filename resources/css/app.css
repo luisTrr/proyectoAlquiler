@@ -1,0 +1,33 @@
+/* Estilos para los checkboxes */
+input[type="checkbox"] {
+  width: 20px; /* Ancho del checkbox */
+  height: 20px; /* Alto del checkbox */
+  margin-right: 10px; /* Espacio entre el checkbox y el texto */
+}
+
+/* Cambiar el estilo de fondo cuando se selecciona */
+input[type="checkbox"]:checked {
+  background-color: #007bff; /* Cambiar el color de fondo cuando está seleccionado */
+  border-color: #007bff; /* Cambiar el color del borde cuando está seleccionado */
+}
+
+/* Cambiar el estilo del indicador (marcado) */
+input[type="checkbox"]::before {
+  content: '\2713'; /* Símbolo de check (✔) */
+  display: inline-block;
+  font-size: 16px; /* Tamaño del símbolo de check */
+  color: #fff; /* Color del símbolo de check */
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Quitar el estilo de borde predeterminado */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
