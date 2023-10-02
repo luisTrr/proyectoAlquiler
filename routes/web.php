@@ -38,6 +38,10 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/create', [HomeController::class, 'create'])->name('create');
 	Route::post('/store', [HomeController::class, 'store'])->name('store');
+	Route::get('/ver-publicacion', [PublicacionesController::class, 'index'])->name('ver-publicacion');
+	Route::post('/crear-publicacion', [PublicacionesController::class, 'crearPublicacion'])->name('crear-publicacion');
+	Route::put('/actualizar-publicacion', [PublicacionesController::class, 'actualizarPublicacion'])->name('actualizar-publicacion');
+	Route::delete('/eliminar-publicacion', [PublicacionesController::class, 'eliminarPublicacion'])->name('eliminar-publicacion');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

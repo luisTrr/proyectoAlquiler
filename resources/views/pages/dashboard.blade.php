@@ -34,27 +34,24 @@
                     <div class="card-body p-3">
                         <div class="row">
                             <<div style="background:0f1f1f1;widt:45%; height:150px">
-    <h5>Crear Anuncio</h5>
-    <form action="{{ route('store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" id="titulo" name="titulo" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" id="descripcion" name="descripcion" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" name="direccion" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="precio">Precio</label>
-            <input type="number" id="precio" name="precio" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    <div class="numbers">
+        <p class="text-sm mb-0 text-uppercase font-weight-bold">Crear Nueva Publicación</p>
+        <form action="{{ route('crear-publicacion') }}" method="post">
+            @csrf
+            <label for="titulo">Título:</label>
+            <input type="text" name="titulo" required><br>
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" rows="4" required></textarea><br>
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" required><br>
+            <label for="precio">Precio:</label>
+            <input type="number" name="precio" required><br>
+            <!-- <label for="opciones_alquiler_id">Opciones de Alquiler ID:</label>
+            <input type="number" name="opciones_alquiler_id" required><br> -->
+            <!-- Agrega otros campos según necesidad -->
+
+            <button type="submit">Crear Publicación</button>
+        </form>
     </div>
                             <div class="col-4 text-end">
                                 <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
@@ -65,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <!-- <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
                         <div class="row">
@@ -114,8 +111,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4">
+        </div> -->
+        <!-- <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
@@ -181,8 +178,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4">
+        </div> -->
+        <!-- <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
@@ -399,7 +396,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         @include('layouts.footers.auth.footer')
     </div>

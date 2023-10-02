@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Opciones_alquiler extends Model
 {
     use HasFactory;
+    protected $table = 'opciones_alquiler';
+
     protected $fillable = [
         'nombre_opcion',
     ];
