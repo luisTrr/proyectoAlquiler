@@ -24,7 +24,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
-use App\Http\Controllers\PublicacionesController;              
+use App\Http\Controllers\PublicacionesController; 
+use App\Http\Controllers\OpcionesAlquilerController;               
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -38,10 +39,16 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/create', [HomeController::class, 'create'])->name('create');
 	Route::post('/store', [HomeController::class, 'store'])->name('store');
+	//PUBLICACIONES
 	Route::get('/ver-publicacion', [PublicacionesController::class, 'index'])->name('ver-publicacion');
 	Route::post('/crear-publicacion', [PublicacionesController::class, 'crearPublicacion'])->name('crear-publicacion');
 	Route::put('/actualizar-publicacion', [PublicacionesController::class, 'actualizarPublicacion'])->name('actualizar-publicacion');
 	Route::delete('/eliminar-publicacion', [PublicacionesController::class, 'eliminarPublicacion'])->name('eliminar-publicacion');
+	//OPCIONES ALQUILER
+	Route::get('opciones_alquiler', [OpcionesAlquilerController::class, 'index']);
+	Route::post('opciones_alquiler', [OpcionesAlquilerController::class, 'crearOpcionAlquiler']);
+	Route::put('opciones_alquiler', [OpcionesAlquilerController::class, 'actualizarOpcionAlquiler']);
+	Route::delete('opciones_alquiler', [OpcionesAlquilerController::class, 'eliminarOpcionAlquiler']);
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

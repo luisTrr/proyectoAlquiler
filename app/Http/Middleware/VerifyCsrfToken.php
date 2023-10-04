@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'crear-publicacion',
         'actualizar-publicacion',
-        'eliminar-publicacion', // Ruta a excluir de la verificación CSRF
+        'eliminar-publicacion',
+        'opciones_alquiler', // Ruta a excluir de la verificación CSRF
     ];
 }
