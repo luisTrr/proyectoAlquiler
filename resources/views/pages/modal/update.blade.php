@@ -1,8 +1,8 @@
-<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Crear Publicacion</h4>
+        <h4 class="modal-title" id="">Editar Publicacion</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -46,13 +46,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success" id="guardar">Guardar</button>
+        <button type="button" class="btn btn-success" id="editar">Editar</button>
       </div>
     </div>
   </div>
 </div>
 <script>
-  document.getElementById('guardar').addEventListener('click', function() {
+  document.getElementById('editar').addEventListener('click', function() {
     window.location.href = 'publicacion';
   });
 </script>
