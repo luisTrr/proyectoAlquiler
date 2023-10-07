@@ -23,17 +23,19 @@
                       </tr>
                     </thead>
                     <tbody>
+                    @foreach($publicaciones as $publicacion)
                       <tr>
-                        <td>1</td>
-                        <td>Casa</td>
-                          <td>Casa 300m2 4 cuartos y 2 baños</td>
-                          <td>1500 Bs</td>
-                          <td>
-                            <a type="button" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                            <a type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-                            <a type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                          </td>
-                      </tr>                                            
+                        <td>{{ $publicacion->id }}</td>
+                        <td>{{ $publicacion->titulo }}</td>
+                        <td>{{ $publicacion->descripcion }}</td>
+                        <td>{{ $publicacion->precio }}</td>
+                        <td>
+                          <a type="button" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                          <a type="button" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+                          <a type="button" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
+                      </tr>
+                    @endforeach                                            
                     </tbody>
                   </table>
                   <nav aria-label="Page navigation example">

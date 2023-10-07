@@ -18,12 +18,7 @@ class PublicacionesController extends Controller
     public function index()
     {
         $publicaciones = Publicaciones::all();
-
-        if ($publicaciones->isEmpty()) {
-            return response()->json(['message' => 'No hay publicaciones disponibles'], 404);
-        }
-
-        return response()->json(['publicaciones' => $publicaciones], 200);
+        return view('pages.publicacion', compact('publicaciones'));
     }
     public function create()
     {
