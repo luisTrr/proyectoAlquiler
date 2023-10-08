@@ -5,13 +5,17 @@
     <div class="row mt-4 mx-4">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fa fa-align-justify"></i> Publicacion
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal">
-                        <i class="icon-plus"></i>&nbsp;Nuevo
-                    </button>
-                </div>
-                <div class="table-responsive text-center">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Publicacion
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal" 
+                        data-user="{{ json_encode($user )}}"
+                        data-opciones-alquiler="{{ json_encode($opcionesAlquiler) }}" 
+                        data-alquiler-anticretico="{{ json_encode($alquilerAnticretico) }}">
+                    <i class="icon-plus"></i>&nbsp;Nuevo
+                </button>
+            </div>
+
+                <div class="container text-center">
                   <table class="table datatables" id="dataTable-1">
                     <thead>
                       <tr>

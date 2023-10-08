@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class alquiler_anticretico extends Model
 {
     use HasFactory;
+    protected $table = 'alquiler_anticretico';
     protected $fillable = [
         'estadoPublicacion',
     ];
