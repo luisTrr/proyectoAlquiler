@@ -2,7 +2,7 @@
 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-info">
         <h4 class="modal-title" id="myModalLabel">Crear Publicacion</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -77,8 +77,8 @@
     </div>
   </div>
 </div>
-<script>
-  // Handler para cuando se muestra el modal
+<!-- <script>
+  Handler para cuando se muestra el modal
   $('#Modal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget);
     var user = JSON.parse(button.data('user'));
@@ -89,8 +89,8 @@
     console.log(opcionesAlquiler);
     console.log(alquilerAnticretico);
 
-    // Haz lo que necesites con las variables aquí dentro
+    Haz lo que necesites con las variables aquí dentro
   });
 
-  // Handler para el botón "Guardar"
-</script>
+  Handler para el botón "Guardar"
+</script> -->

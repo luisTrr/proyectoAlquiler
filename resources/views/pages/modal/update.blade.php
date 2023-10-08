@@ -1,7 +1,7 @@
 <div class="modal fade" id="Modalupdate" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header bg-info">
         <h4 class="modal-title" id="myModalLabel">Editar Publicacion</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -46,7 +46,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-success" id="editar">Editar</button>
+        <button type="button" class="btn btn-primary" id="editar">Editar</button>
       </div>
     </div>
   </div>

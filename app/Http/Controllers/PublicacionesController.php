@@ -149,26 +149,37 @@ public function actualizarPublicacion(Request $request)
     // Responder con un JSON que contenga información sobre la publicación actualizada
     return response()->json(['message' => 'Publicación actualizada exitosamente', 'publicacion' => $publicacion], 200);
 }
-public function eliminarPublicacion(Request $request)
-{
+// public function eliminarPublicacion(Request $request)
+// {
     // Validar los datos enviados desde el formulario
-    $request->validate([
-        'id' => 'required|exists:publicaciones,id',
-    ]);
+    // $request->validate([
+    //     'id' => 'required|exists:publicaciones,id',
+    // ]);
 
-    $id = $request->id;
+    // $id = $request->id;
 
-    // Buscar la publicación por ID
-    $publicacion = Publicaciones::find($id);
+    // // Buscar la publicación por ID
+    // $publicacion = Publicaciones::find($id);
 
-    if (!$publicacion) {
-        return response()->json(['message' => 'Publicación no encontrada'], 404);
-    }
+    // if (!$publicacion) {
+    //     return response()->json(['message' => 'Publicación no encontrada'], 404);
+    // }
 
     // Eliminar la publicación
-    $publicacion->delete();
+//     $publicacion->delete();
 
-    return response()->json(['message' => 'Publicación eliminada exitosamente'], 200);
+//     return response()->json(['message' => 'Publicación eliminada exitosamente'], 200);
+// }
+public function eliminarPublicacion($id)
+{
+    $publicacion = Publicaciones::find($id);
+
+    if ($publicacion) {
+        $publicacion->delete();
+        return response()->json(['success' => true, 'message' => 'Publicación eliminada exitosamente.']);
+    } else {
+        return response()->json(['success' => false, 'message' => 'No se pudo encontrar la publicación.'], 404);
+    }
 }
 
     

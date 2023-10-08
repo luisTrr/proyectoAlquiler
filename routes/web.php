@@ -43,7 +43,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/ver-publicacion', [PublicacionesController::class, 'index'])->name('ver-publicacion');
 	Route::post('/crear-publicacion', [PublicacionesController::class, 'crearPublicacion'])->name('crear-publicacion');
 	Route::put('/actualizar-publicacion', [PublicacionesController::class, 'actualizarPublicacion'])->name('actualizar-publicacion');
-	Route::delete('/eliminar-publicacion', [PublicacionesController::class, 'eliminarPublicacion'])->name('eliminar-publicacion');
+	Route::delete('/eliminar-publicacion/{id}', [PublicacionesController::class, 'eliminarPublicacion'])->name('eliminar-publicacion');
 	//OPCIONES ALQUILER
 	Route::get('opciones_alquiler', [OpcionesAlquilerController::class, 'index']);
 	Route::post('opciones_alquiler', [OpcionesAlquilerController::class, 'crearOpcionAlquiler']);
