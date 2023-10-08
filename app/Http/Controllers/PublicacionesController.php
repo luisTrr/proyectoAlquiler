@@ -5,6 +5,7 @@ use App\Models\publicaciones;
 use App\Models\Opciones_alquiler;
 use App\Models\alquiler_anticretico;
 use App\Models\Recursos;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -18,15 +19,18 @@ class PublicacionesController extends Controller
     public function index()
     {
         $publicaciones = Publicaciones::all();
-        return view('pages.publicacion', compact('publicaciones'));
-    }
-    public function create()
-    {
-        $recursos = Recursos::all();
+        //$recursos = Recursos::all();
+        $user = User::all();
         $opcionesAlquiler = Opciones_alquiler::all();
         $alquilerAnticretico = alquiler_anticretico::all();
-        return ['recursos'=>$recursos, 'opcionesAlquiler'=>$opcionesAlquiler, 'alquilerAnticretico'=>$alquilerAnticretico];
+        return view('pages.publicacion', compact('publicaciones','user','opcionesAlquiler','alquilerAnticretico'));
     }
+    // public function create()
+    // {
+        
+    //     //return ['recursos'=>$recursos, 'opcionesAlquiler'=>$opcionesAlquiler, 'alquilerAnticretico'=>$alquilerAnticretico];
+    //     return view('pages.modal.create', compact('recursos', 'opcionesAlquiler', 'alquilerAnticretico'));
+    // }
 //     public function crearPublicacion(Request $request)
 // {
 //     // Validar los datos enviados desde el formulario
@@ -99,7 +103,7 @@ public function crearPublicacion(Request $request)
     }
 
     // Responder con un JSON que contenga información sobre la publicación creada
-    return response()->json(['message' => 'Publicación creada exitosamente', 'publicacion' => $publicacion], 201);
+    return redirect()->route('ver-publicacion');
 }
 public function actualizarPublicacion(Request $request)
 {
