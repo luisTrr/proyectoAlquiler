@@ -2,11 +2,12 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Publicaciones'])
+    <div class="container">
     <div class="row mt-4 mx-4">
-        <div class="col-12">
+        <div class="col-12 d-flex justify-content-center">
             <div class="card mb-4">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                <div class="card">
+                    <img src="./img/bg-profile.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -16,12 +17,13 @@
             </div>
         </div>
     </div>
+    </div>
 @include('layouts.footers.auth.footer')
 @endsection
 
 @push('js')
     <script src="./assets/js/plugins/chartjs.min.js"></script>
-    <script>
+    <!-- <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
         var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
@@ -103,5 +105,5 @@
                 },
             },
         });
-    </script>
+    </script> -->
 @endpush
