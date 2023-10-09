@@ -35,7 +35,7 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // alert(data.message);
+                            //alert(data.message);
                             location.reload();
                         } else {
                             alert(data.message);
