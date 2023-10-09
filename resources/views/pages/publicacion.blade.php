@@ -36,7 +36,10 @@
                         <td>
                           <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a>
                           <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
-                          <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modaldelete"><i class="fa fa-trash"></i></a>
+                          <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modaldelete"
+                            data-publicacion-id="{{ $publicacion->id }}">
+                            <i class="fa fa-trash"></i>
+                          </a>
                         </td>
                       </tr>
                     @endforeach                        
