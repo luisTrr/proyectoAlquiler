@@ -147,7 +147,7 @@ public function actualizarPublicacion(Request $request)
     }
 
     // Responder con un JSON que contenga información sobre la publicación actualizada
-    return response()->json(['message' => 'Publicación actualizada exitosamente', 'publicacion' => $publicacion], 200);
+    return redirect()->route('ver-publicacion');
 }
 // public function eliminarPublicacion(Request $request)
 // {

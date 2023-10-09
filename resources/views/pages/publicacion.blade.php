@@ -35,8 +35,8 @@
                         <td>{{ $publicacion->precio }}</td>
                         <td>
                           <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a>
-                          <a type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
-                          <a type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modaldelete" ><i class="fa fa-trash"></i></a>
+                          <a type="button" class="btn btn-warning" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
+                          <a type="button" class="btn btn-danger" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modaldelete" ><i class="fa fa-trash"></i></a>
                         </td>
                       </tr>
                     @endforeach                        
@@ -62,6 +62,14 @@
   @include('layouts.footers.auth.footer')
 
 @endsection
+<script>
+    function setEditModalId(id) {
+        document.getElementById('id').value = id;
+
+        const eliminarButton = document.querySelector('.eliminar');
+        eliminarButton.dataset.publicacionId = id;
+    }
+</script>
 <!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const eliminarBotones = document.querySelectorAll('.eliminar');
