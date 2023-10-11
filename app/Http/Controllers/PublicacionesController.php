@@ -74,13 +74,13 @@ public function crearPublicacion(Request $request)
         'descripcion' => 'required',
         'direccion' => 'required|max:200',
         'precio' => 'required|numeric|min:0',
-        'usuario_id' => 'required|exists:users,id',
+        //'usuario_id' => 'required|exists:users,id',
         //'imagen' => 'required|max:191',
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
     ]);
 
-    // $usuario_id = Auth::id();
+    $usuario_id = Auth::id();
     // if (!$usuario_id) {
     //     return response()->json(['message' => 'No se pudo obtener el usuario autenticado', 'usuario'=> $usuario_id], 500);
     // }
@@ -91,7 +91,7 @@ public function crearPublicacion(Request $request)
         'descripcion' => $request->descripcion,
         'direccion' => $request->direccion,
         'precio' => $request->precio,
-        'usuario_id' => $request->usuario_id,
+        'usuario_id' => $usuario_id,
         'imagen' => $request->imagen,
         'opciones_alquiler_id' => $request->opciones_alquiler_id,
         'alquiler_anticretico_id' => $request->alquiler_anticretico_id,
