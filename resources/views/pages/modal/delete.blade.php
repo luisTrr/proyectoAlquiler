@@ -7,6 +7,9 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar esta publicación?
+      </div>
       <div class="modal-footer d-flex justify-content-center">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
         <div class="mx-4"></div>

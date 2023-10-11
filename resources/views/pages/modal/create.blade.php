@@ -47,7 +47,7 @@
               </select>
           </div>
           <div class="form-group">
-              <label for="alquiler_anticretico_id">Opciones de Alquiler</label>
+              <label for="alquiler_anticretico_id">Alquiler o Anticretico</label>
               <select id="alquiler_anticretico_id" name="alquiler_anticretico_id" class="form-control" required>
                   @foreach ($alquilerAnticretico as $OPC)
                       <option value="{{ $OPC->id }}">{{ $OPC->id }}</option>
