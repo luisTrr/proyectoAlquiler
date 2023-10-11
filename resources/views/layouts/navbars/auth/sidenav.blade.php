@@ -48,9 +48,27 @@
             <li class="nav-item">
                 <a class="nav-link {{ str_contains(request()->url(), 'user-management') == true ? 'active' : '' }}" href="{{ route('ver-publicacion') }}">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-calendar-grid-58 text-success text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Crear Publicacion</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ str_contains(request()->url(), 'tables') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'tables']) }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-handshake-o text-primary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Reservas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{  str_contains(request()->url(), 'billing') == true ? 'active' : '' }}" href="{{ route('page', ['page' => 'billing']) }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Tipo Alquiler</span>
                 </a>
             </li>
             <!-- <li class="nav-item mt-3">
