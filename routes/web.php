@@ -40,6 +40,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/create', [HomeController::class, 'create'])->name('create');
 	Route::post('/store', [HomeController::class, 'store'])->name('store');
 	//PUBLICACIONES
+	Route::get('/publicaciones-disponibles', [PublicacionesController::class, 'cards'])->name('publicaciones-disponibles');
 	Route::get('/ver-publicacion', [PublicacionesController::class, 'index'])->name('ver-publicacion');
 	Route::post('/crear-publicacion', [PublicacionesController::class, 'crearPublicacion'])->name('crear-publicacion');
 	Route::put('/actualizar-publicacion', [PublicacionesController::class, 'actualizarPublicacion'])->name('actualizar-publicacion');

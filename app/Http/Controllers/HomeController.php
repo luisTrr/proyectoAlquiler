@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\publicaciones;
+use App\Models\Opciones_alquiler;
+use App\Models\alquiler_anticretico;
+use App\Models\Recursos;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,9 +25,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
+    
     public function index()
     {
-        return view('pages.dashboard');
+        $publicaciones = Publicaciones::all();
+        //$recursos = Recursos::all();
+        $user = User::all();
+        $opcionesAlquiler = Opciones_alquiler::all();
+        $alquilerAnticretico = alquiler_anticretico::all();
+        return view('pages.dashboard', compact('publicaciones','user','opcionesAlquiler','alquilerAnticretico'));
     }
     // public function CrearPublicacion()
     //     {
