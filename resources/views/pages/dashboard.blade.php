@@ -11,18 +11,28 @@
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                         <p class="card-text">{{ $publicacion->descripcion }}</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
+                        <a type="button" class="btn btn-primary" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modalcard">Detalles</a>
+                        <a href="#" class="btn btn-success">Guardar</a>
                     </div>
                 </div>    
         </div>
         @endforeach
     </div>
     </div>
+@include('pages.modal.card')
 @include('layouts.footers.auth.footer')
 @endsection
 
-@push('js')
-    <script src="./assets/js/plugins/chartjs.min.js"></script>
+<script>
+    function setEditModalId(id) {
+        document.getElementById('id').value = id;
+
+        const eliminarButton = document.querySelector('.eliminar');
+    }
+</script>
+
+    <!-- <script src="./assets/js/plugins/chartjs.min.js"></script> -->
+    
     <!-- <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -106,4 +116,3 @@
             },
         });
     </script> -->
-@endpush
