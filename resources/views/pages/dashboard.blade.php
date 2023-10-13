@@ -4,18 +4,18 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Publicaciones'])
     <div class="container">
     <div class="row mt-4 mx-4">
-        <div class="col-12 d-flex justify-content-center">
-            <div class="card mb-4">
-                <div class="card">
-                    <img src="./img/bg-profile.jpg" class="card-img-top" alt="...">
+        @foreach($publicaciones as $publicacion)
+        <div class="col-12 d-flex justify-content-center">            
+                <div class="card mb-4 w-70 h-20">
+                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                        <p class="card-text">{{ $publicacion->descripcion }}</p>
+                        <a href="#" class="btn btn-primary">Ver detalles</a>
                     </div>
-                </div>
-            </div>
+                </div>    
         </div>
+        @endforeach
     </div>
     </div>
 @include('layouts.footers.auth.footer')

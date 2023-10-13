@@ -9,7 +9,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{ route('crear-publicacion') }}" method="POST">
+        <form action="{{ route('crear-publicacion') }}" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" id="titulo" name="titulo" class="form-control">
