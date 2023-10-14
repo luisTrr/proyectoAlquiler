@@ -34,18 +34,10 @@ class HomeController extends Controller
         $alquilerAnticretico = alquiler_anticretico::all();
         return view('pages.dashboard', compact('publicaciones','opcionesAlquiler','alquilerAnticretico'));
     }
-    public function ver($id){
+    public function ver(Request $request, $id){
         // Obtén la publicación con el ID proporcionado
-        $publicacion = Publicaciones::find($id);
-
-        if ($publicacion) {
-            // Si se encuentra la publicación, la pasamos a la vista
-            return view('pages/modal.card', compact('publicacion'));
-        } else {
-            // Si no se encuentra la publicación, puedes manejarlo de acuerdo a tus necesidades
-            // Por ejemplo, redireccionar a una página de error
-            return redirect()->route('error.page');
-        }
+        $publicacion = Publicaciones::findOrFail($id);
+        return response()->json(['publicacion' => $publicacion]);
     }
     // public function CrearPublicacion()
     //     {

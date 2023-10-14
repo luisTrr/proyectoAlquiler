@@ -34,7 +34,8 @@
                         <td>{{ $publicacion->direccion }}</td>
                         <td>{{ $publicacion->precio }}</td>
                         <td>
-                          <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a>
+                          <a type="button" class="btn btn-primary" onclick="mostrarDetalles({{ $publicacion->id }})" data-toggle="modal" data-target="#Modalcard"><i class="fa fa-eye"></i></a>
+                          <!-- <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a> -->
                           <a type="button" class="btn btn-warning" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
                           <a type="button" class="btn btn-danger" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modaldelete" ><i class="fa fa-trash"></i></a>
                         </td>
@@ -56,7 +57,7 @@
         </div>
     </div>
   @include('pages.modal.create')
-  @include('pages.modal.read')
+  @include('pages.modal.card')
   @include('pages.modal.update')
   @include('pages.modal.delete')
   @include('layouts.footers.auth.footer')

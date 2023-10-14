@@ -8,20 +8,35 @@
         </button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="id" name="id" value="{{ $publicacion->id }}">
-          Aqui abra mas detalles de la publicacion...
-        <p id="valor.id"></p>
+                    @foreach($publicaciones as $publicacion)
+                      <tr>
+                        <td>{{ $publicacion->id }}</td>
+                        <td>{{ $publicacion->titulo }}</td>
+                        <td>{{ $publicacion->direccion }}</td>
+                        <td>{{ $publicacion->precio }}</td>
+                      </tr>
+                    @endforeach 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-        <div class="mx-4"></div>
-        <!-- <button type="button" class="btn btn-danger eliminar" data-publicacion-id="{{ $publicacion->id }}">Eliminar</button> -->
       </div>
     </div>
   </div>
 </div>
 <script>
-  var valorId = document.getElementById("id").value;
-
-  document.getElementById("valor.id").innerText = "El valor del input es: " + valorId;
+    function mostrarDetalles(id) {
+        fetch(`/ver/${id}/detalles`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const publicaciones = data.publicacion;
+        })
+        .catch(error => console.error('Error:', error));
+    }
 </script>
+
