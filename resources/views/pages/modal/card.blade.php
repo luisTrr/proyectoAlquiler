@@ -8,14 +8,9 @@
         </button>
       </div>
       <div class="modal-body">
-                    @foreach($publicaciones as $publicacion)
-                      <tr>
-                        <td>{{ $publicacion->id }}</td>
-                        <td>{{ $publicacion->titulo }}</td>
-                        <td>{{ $publicacion->direccion }}</td>
-                        <td>{{ $publicacion->precio }}</td>
-                      </tr>
-                    @endforeach 
+        <div id="detallePublicacion">
+            <!-- Detalles de la publicación se cargarán aquí -->
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
@@ -34,7 +29,16 @@
         })
         .then(response => response.json())
         .then(data => {
-            const publicaciones = data.publicacion;
+            const publicacion = data.publicacion;
+            const detalleHtml = `
+                <p><strong>Título:</strong> ${publicacion.titulo}</p>
+                <p><strong>Descripción:</strong> ${publicacion.descripcion}</p>
+                <p><strong>Dirección:</strong> ${publicacion.direccion}</p>
+                <p><strong>Precio:</strong> ${publicacion.precio}</p>
+                <!-- Agrega más detalles según tu estructura de datos -->
+            `;
+            document.getElementById('detallePublicacion').innerHTML = detalleHtml;
+            $('#Modalcard').modal('show');
         })
         .catch(error => console.error('Error:', error));
     }
