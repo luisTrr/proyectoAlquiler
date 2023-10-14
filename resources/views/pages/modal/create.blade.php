@@ -65,19 +65,20 @@
             <label for="celular">Celular</label>
             <input type="number" id="celular" name="celular" class="form-control">
           </div>
-          <!-- <div class="form-group">
-            <h5>Recursos Disponibles</h5>
-            <label for="luz">Luz</label>
-            <input type="checkbox" id="luz" name="luz" class="form-check-label">  
-          </div>
+
           <div class="form-group">
-            <label for="agua">Agua</label>
-            <input type="checkbox" id="agua" name="agua" class="form-check-label">
+              <label>Recursos Disponibles:</label><br>
+
+              <input type="checkbox" name="recursos[aguaCaliente]" value="1"> Agua Caliente<br>
+              <input type="checkbox" name="recursos[wifi]" value="1"> WiFi<br>
+              <input type="checkbox" name="recursos[gasDomiciliario]" value="1"> Gas Domiciliario<br>
+              <input type="checkbox" name="recursos[mascotas]" value="1"> Mascotas<br>
+              <input type="checkbox" name="recursos[luz]" value="1"> Luz<br>
+              <input type="checkbox" name="recursos[agua]" value="1"> Agua<br>
+              <input type="checkbox" name="recursos[residenciaAdventista]" value="1"> Residencia Adventista<br>
+              <input type="checkbox" name="recursos[horaDeLlegada]" value="1"> Hora de Llegada<br>
           </div>
-          <div class="form-group">
-            <label for="wifi">WiFi</label>
-            <input type="checkbox" id="wifi" name="wifi" class="form-check-label">
-          </div> -->
+
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="submit" class="btn btn-success" id="guardar">Guardar</button>
