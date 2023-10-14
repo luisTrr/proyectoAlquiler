@@ -18,6 +18,7 @@ class publicaciones extends Model
         'imagen',
         'opciones_alquiler_id',
         'alquiler_anticretico_id',
+        'celular',
     ];
     public function usuario()
     {
