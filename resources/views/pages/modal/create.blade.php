@@ -50,10 +50,17 @@
               <label for="alquiler_anticretico_id">Alquiler o Anticretico</label>
               <select id="alquiler_anticretico_id" name="alquiler_anticretico_id" class="form-control" required>
                   @foreach ($alquilerAnticretico as $OPC)
-                      <option value="{{ $OPC->id }}">{{ $OPC->id }}</option>
+                      <option value="{{ $OPC->id }}">{{ $OPC->nombreAlquiler }}</option>
                   @endforeach
               </select>
           </div>
+          <!-- <div class="form-group">
+              <label for="alquiler_anticretico_id">Alquiler o Anticretico:</label>
+              <select id="alquiler_anticretico_id" name="alquiler_anticretico_id" class="form-control" required>
+                  <option value="0">Alquiler</option>
+                  <option value="1">Anticretico</option>
+              </select>
+          </div> -->
           <div class="form-group">
             <label for="celular">Celular</label>
             <input type="number" id="celular" name="celular" class="form-control">
