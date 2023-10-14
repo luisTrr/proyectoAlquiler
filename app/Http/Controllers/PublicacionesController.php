@@ -74,7 +74,6 @@ public function crearPublicacion(Request $request)
         'descripcion' => 'required',
         'direccion' => 'required|max:200',
         'precio' => 'required|numeric|min:0',
-        //'usuario_id' => 'required|exists:users,id',
         'imagen' => 'required|max:191',
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
@@ -82,6 +81,7 @@ public function crearPublicacion(Request $request)
     ]);
 
     $usuario_id = Auth::id();
+
     if ($request->hasFile('imagen')) {
         // Guardar la imagen en la carpeta 'uploads' dentro de la carpeta 'public'
         $imagenPath = $request->file('imagen')->store('imagenesPublicacion', 'public');
@@ -91,9 +91,6 @@ public function crearPublicacion(Request $request)
     } else {
         $imagenUrl = null; // Opcional: si no hay imagen, puedes asignar null o una ruta por defecto
     }
-    // if (!$usuario_id) {
-    //     return response()->json(['message' => 'No se pudo obtener el usuario autenticado', 'usuario'=> $usuario_id], 500);
-    // }
 
     // Crear la nueva publicación
     $publicacion = Publicaciones::create([
@@ -108,14 +105,16 @@ public function crearPublicacion(Request $request)
         'celular' => $request->celular,
     ]);
 
-    // Asociar recursos a la publicación
-    if ($request->has('recursos')) {
-        $publicacion->recursos()->attach($request->recursos);
-    }
+    // Crear un nuevo recurso con los valores proporcionados
+    $recurso = Recursos::create($request->input('recursos', []));
+
+    // Asociar el recurso a la publicación
+    $publicacion->recursos()->attach($recurso->id);
 
     // Responder con un JSON que contenga información sobre la publicación creada
     return redirect()->route('ver-publicacion');
 }
+
 public function actualizarPublicacion(Request $request)
 {
     // Validar los datos enviados desde el formulario

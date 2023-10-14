@@ -36,6 +36,6 @@ class publicaciones extends Model
     }
     public function recursos()
     {
-        return $this->belongsToMany(Recurso::class, 'publicacion_recursos', 'publicacion_id', 'recurso_id');
+        return $this->belongsToMany(Recursos::class, 'publicacion_recursos', 'publicacion_id', 'recurso_id');
     }
 }
