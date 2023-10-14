@@ -37,7 +37,10 @@ class HomeController extends Controller
     public function ver(Request $request, $id){
         // Obtén la publicación con el ID proporcionado
         $publicacion = Publicaciones::findOrFail($id);
-        return response()->json(['publicacion' => $publicacion]);
+        $opcionesAlquiler = Opciones_alquiler::all();
+        $alquilerAnticretico = alquiler_anticretico::all();
+        return view('pages.ver', compact('publicacion','opcionesAlquiler','alquilerAnticretico'));
+        // return response()->json(['publicacion' => $publicacion]);
     }
     // public function CrearPublicacion()
     //     {

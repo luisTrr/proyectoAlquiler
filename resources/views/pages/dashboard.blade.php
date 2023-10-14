@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                         <p class="card-text">{{ $publicacion->descripcion }}</p>
-                        <a type="button" class="btn btn-primary" onclick="mostrarDetalles({{ $publicacion->id }})" data-toggle="modal" data-target="#Modalcard">Detalles</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
                         <a href="#" class="btn btn-success">Guardar</a>
                     </div>
                 </div>    

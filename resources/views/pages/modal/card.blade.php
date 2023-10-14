@@ -8,8 +8,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <div id="detallePublicacion">
-            <!-- Detalles de la publicación se cargarán aquí -->
+        <div >
+        <div class="form-group">
+            <strong>Id:</strong>
+            {{ $publicacion->id}}
+        </div>
+        <div class="form-group">
+            <strong>Opciones Id:</strong>
+            {{ $publicacion->opciones_alquiler_id}}
+        </div>
+        <div class="form-group">
+            <strong>Titulo:</strong>
+            {{ $publicacion->titulo }}
+        </div>
+        <div class="form-group">
+            <strong>Descripcion:</strong>
+            {{ $publicacion->descripcion }}
+        </div>
+        <div class="form-group">
+            <strong>Celular:</strong>
+            {{ $publicacion->celular }}
+        </div>
+        <div class="form-group">
+            <strong>Precio:</strong>
+            {{ $publicacion->precio }}
+        </div>
         </div>
       </div>
       <div class="modal-footer">
@@ -18,7 +41,7 @@
     </div>
   </div>
 </div>
-<script>
+<!-- <script>
     function mostrarDetalles(id) {
         fetch(`/ver/${id}/detalles`, {
             method: 'GET',
@@ -37,12 +60,11 @@
                 <p><strong>Dirección:</strong> ${publicacion.direccion}</p>
                 <p><strong>Precio:</strong> ${publicacion.precio}</p>
                 <p><strong>Celular:</strong> ${publicacion.celular}</p>
-                <!-- Agrega más detalles según tu estructura de datos -->
             `;
             document.getElementById('detallePublicacion').innerHTML = detalleHtml;
             $('#Modalcard').modal('close');
         })
         .catch(error => console.error('Error:', error));
     }
-</script>
+</script> -->
 
