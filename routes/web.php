@@ -38,7 +38,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/create', [HomeController::class, 'create'])->name('create');
-	Route::get('/ver/{id}/detalles', [HomeController::class, 'ver'])->name('ver');
+	Route::get('/ver/{id}', [HomeController::class, 'ver'])->name('ver');
 	Route::post('/store', [HomeController::class, 'store'])->name('store');
 	//PUBLICACIONES
 	Route::get('/publicaciones-disponibles', [PublicacionesController::class, 'cards'])->name('publicaciones-disponibles');

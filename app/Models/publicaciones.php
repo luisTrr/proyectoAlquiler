@@ -22,17 +22,17 @@ class publicaciones extends Model
     ];
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function opcionesAlquiler()
     {
-        return $this->belongsTo(OpcionAlquiler::class, 'opciones_alquiler_id');
+        return $this->belongsTo(Opciones_alquiler::class, 'opciones_alquiler_id');
     }
 
     public function alquilerAnticretico()
     {
-        return $this->belongsTo(AlquilerAnticretico::class, 'alquiler_anticretico_id');
+        return $this->belongsTo(alquiler_anticretico::class, 'alquiler_anticretico_id');
     }
     public function recursos()
     {
