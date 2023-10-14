@@ -78,6 +78,7 @@ public function crearPublicacion(Request $request)
         'imagen' => 'required|max:191',
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
+        'celular' => 'required|numeric|min:7',
     ]);
 
     $usuario_id = Auth::id();
@@ -104,6 +105,7 @@ public function crearPublicacion(Request $request)
         'imagen' => $imagenUrl,
         'opciones_alquiler_id' => $request->opciones_alquiler_id,
         'alquiler_anticretico_id' => $request->alquiler_anticretico_id,
+        'celular' => $request->celular,
     ]);
 
     // Asociar recursos a la publicación
@@ -123,12 +125,23 @@ public function actualizarPublicacion(Request $request)
         'descripcion' => 'required',
         'direccion' => 'required|max:200',
         'precio' => 'required|numeric|min:0',
-        'usuario_id' => 'required|exists:users,id',
+        'imagen' => 'required|max:191',
+        //'usuario_id' => 'required|exists:users,id',
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
+        'celular' => 'required|numeric|min:7',
     ]);
 
     $usuario_id = Auth::id();
+    if ($request->hasFile('imagen')) {
+        // Guardar la imagen en la carpeta 'uploads' dentro de la carpeta 'public'
+        $imagenPath = $request->file('imagen')->store('imagenesPublicacion', 'public');
+
+        // Asignar la ruta de la imagen a la propiedad 'imagen'
+        $imagenUrl = asset('storage/' . $imagenPath); // Genera la URL de la imagen
+    } else {
+        $imagenUrl = null; // Opcional: si no hay imagen, puedes asignar null o una ruta por defecto
+    }
     $id = $request->id;
 
     // Buscar la publicación por ID
@@ -144,10 +157,11 @@ public function actualizarPublicacion(Request $request)
         'descripcion' => $request->descripcion,
         'direccion' => $request->direccion,
         'precio' => $request->precio,
-        'usuario_id' => $request->usuario_id,
-        'imagen' => $request->imagen,
+        'usuario_id' => $usuario_id,
+        'imagen' => $imagenUrl,
         'opciones_alquiler_id' => $request->opciones_alquiler_id,
         'alquiler_anticretico_id' => $request->alquiler_anticretico_id,
+        'celular' => $request->celular,
     ]);
 
     // Actualizar recursos asociados a la publicación

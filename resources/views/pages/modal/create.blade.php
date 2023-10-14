@@ -54,6 +54,10 @@
                   @endforeach
               </select>
           </div>
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input type="number" id="celular" name="celular" class="form-control">
+          </div>
           <!-- <div class="form-group">
             <h5>Recursos Disponibles</h5>
             <label for="luz">Luz</label>

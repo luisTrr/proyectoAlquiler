@@ -31,14 +31,16 @@
         .then(data => {
             const publicacion = data.publicacion;
             const detalleHtml = `
+                <img src="${publicacion.imagen}" class="card-img-top" alt="Imagen de la publicación">
                 <p><strong>Título:</strong> ${publicacion.titulo}</p>
                 <p><strong>Descripción:</strong> ${publicacion.descripcion}</p>
                 <p><strong>Dirección:</strong> ${publicacion.direccion}</p>
                 <p><strong>Precio:</strong> ${publicacion.precio}</p>
+                <p><strong>Celular:</strong> ${publicacion.celular}</p>
                 <!-- Agrega más detalles según tu estructura de datos -->
             `;
             document.getElementById('detallePublicacion').innerHTML = detalleHtml;
-            $('#Modalcard').modal('show');
+            $('#Modalcard').modal('close');
         })
         .catch(error => console.error('Error:', error));
     }

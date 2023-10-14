@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{ route('actualizar-publicacion') }}" method="POST">
+        <form action="{{ route('actualizar-publicacion') }}" method="POST" enctype="multipart/form-data">
         @method('PUT') <!-- Add this line to simulate a PUT request -->
         @csrf <!-- Add CSRF token for Laravel -->
         <input type="hidden" id="id" name="id" value="{{ $publicacion->id }}">
@@ -28,14 +28,14 @@
             <label for="precio">Precio</label>
             <input type="number" id="precio" name="precio" class="form-control">
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
               <label for="usuario_id">Usuario</label>
               <select id="usuario_id" name="usuario_id" class="form-control" required>
                   @foreach ($user as $OPC)
                       <option value="{{ $OPC->id }}">{{ $OPC->username }}</option>
                   @endforeach
               </select>
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="imagen">Imagen</label>
             <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control">
@@ -55,6 +55,10 @@
                       <option value="{{ $OPC->id }}">{{ $OPC->id }}</option>
                   @endforeach
               </select>
+          </div>
+          <div class="form-group">
+            <label for="celular">Celular</label>
+            <input type="number" id="celular" name="celular" class="form-control">
           </div>
           <!-- <div class="form-group">
             <h5>Recursos Disponibles</h5>
