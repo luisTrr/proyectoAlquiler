@@ -49,10 +49,10 @@
               </select>
           </div>
           <div class="form-group">
-              <label for="alquiler_anticretico_id">Opciones de Alquiler</label>
+              <label for="alquiler_anticretico_id">Alquiler o Anticretico</label>
               <select id="alquiler_anticretico_id" name="alquiler_anticretico_id" class="form-control" required>
                   @foreach ($alquilerAnticretico as $OPC)
-                      <option value="{{ $OPC->id }}">{{ $OPC->id }}</option>
+                      <option value="{{ $OPC->id }}">{{ $OPC->nombreAlquiler }}</option>
                   @endforeach
               </select>
           </div>
@@ -60,6 +60,19 @@
             <label for="celular">Celular</label>
             <input type="number" id="celular" name="celular" class="form-control">
           </div>
+          <div class="form-group">
+              <label>Recursos Disponibles:</label><br>
+
+              <input type="checkbox" name="recursos[aguaCaliente]" value="1"> Agua Caliente<br>
+              <input type="checkbox" name="recursos[wifi]" value="1"> WiFi<br>
+              <input type="checkbox" name="recursos[gasDomiciliario]" value="1"> Gas Domiciliario<br>
+              <input type="checkbox" name="recursos[mascotas]" value="1"> Mascotas<br>
+              <input type="checkbox" name="recursos[luz]" value="1"> Luz<br>
+              <input type="checkbox" name="recursos[agua]" value="1"> Agua<br>
+              <input type="checkbox" name="recursos[residenciaAdventista]" value="1"> Residencia Adventista<br>
+              <input type="checkbox" name="recursos[horaDeLlegada]" value="1"> Hora de Llegada<br>
+          </div>
+
           <!-- <div class="form-group">
             <h5>Recursos Disponibles</h5>
             <label for="luz">Luz</label>

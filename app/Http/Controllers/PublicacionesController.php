@@ -163,12 +163,9 @@ public function actualizarPublicacion(Request $request)
         'celular' => $request->celular,
     ]);
 
-    // Actualizar recursos asociados a la publicación
-    if ($request->has('recursos')) {
-        $publicacion->recursos()->sync($request->recursos);
-    }
-
-    // Responder con un JSON que contenga información sobre la publicación actualizada
+    $recursosIds = $publicacion->recursos()->pluck('recurso_id')->toArray();
+    Recursos::where('id', $recursosIds)->update($request->input('recursos', []));
+    
     return redirect()->route('ver-publicacion');
 }
 // public function eliminarPublicacion(Request $request)
