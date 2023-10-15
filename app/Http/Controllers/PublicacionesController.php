@@ -117,6 +117,7 @@ public function crearPublicacion(Request $request)
 
 public function actualizarPublicacion(Request $request)
 {
+    //dd($request->input('recursos', []));
     // Validar los datos enviados desde el formulario
     $request->validate([
         'id' => 'required|exists:publicaciones,id',
@@ -163,8 +164,28 @@ public function actualizarPublicacion(Request $request)
         'celular' => $request->celular,
     ]);
 
+    // Obtén los nombres de los recursos disponibles
+    $recursosDisponibles = [
+        'aguaCaliente', 'wifi', 'gasDomiciliario', 'mascotas', 
+        'luz', 'agua', 'residenciaAdventista', 'horaDeLlegada'
+    ];
+
+    // Inicializa un array con todos los recursos y establece su valor en "0"
+    $recursos = array_fill_keys($recursosDisponibles, '0');
+
+    // Recorre los datos del request y actualiza los valores correspondientes a "1"
+    foreach ($request->input('recursos', []) as $recurso => $valor) {
+        if (array_key_exists($recurso, $recursos)) {
+            $recursos[$recurso] = $valor;
+        }
+    }
+
+    // Muestra los datos actualizados
+    //dd($recursos);
+
+    // Resto de tu lógica
     $recursosIds = $publicacion->recursos()->pluck('recurso_id')->toArray();
-    Recursos::where('id', $recursosIds)->update($request->input('recursos', []));
+    Recursos::whereIn('id', $recursosIds)->update($recursos);
     
     return redirect()->route('ver-publicacion');
 }
