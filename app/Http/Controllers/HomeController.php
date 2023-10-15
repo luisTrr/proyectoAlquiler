@@ -39,7 +39,8 @@ class HomeController extends Controller
         $publicacion = Publicaciones::findOrFail($id);
         $opcionesAlquiler = Opciones_alquiler::all();
         $alquilerAnticretico = alquiler_anticretico::all();
-        return view('pages.ver', compact('publicacion','opcionesAlquiler','alquilerAnticretico'));
+        $recursos = $publicacion->recursos()->get();
+        return view('pages.ver', compact('publicacion','opcionesAlquiler','alquilerAnticretico','recursos'));
         // return response()->json(['publicacion' => $publicacion]);
     }
     // public function CrearPublicacion()
