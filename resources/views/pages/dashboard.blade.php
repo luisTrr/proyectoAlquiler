@@ -10,7 +10,7 @@
                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                     <div class="card-body">
                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                        <p class="card-text">{{ $publicacion->descripcion }}</p>
+                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
                         <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
                         <a href="#" class="btn btn-success">Guardar</a>
                     </div>
