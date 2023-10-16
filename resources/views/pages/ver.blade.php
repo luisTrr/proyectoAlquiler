@@ -270,7 +270,7 @@
               <div class="col-md-3">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                  @if ($recursos[0]->mascotas) 
+                  @if ($recursos[0]->residenciaAdventista) 
                   <div class="custom-icon bg-success shadow text-center border-radius-lg">
                     <i class="fas fa-home opacity-10"></i>
                   @else
@@ -290,7 +290,7 @@
               <div class="col-md-3">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                  @if ($recursos[0]->mascotas) 
+                  @if ($recursos[0]->horaDeLlegada) 
                   <div class="custom-icon bg-success shadow text-center border-radius-lg">
                     <i class="fa fa-clock-o opacity-10"></i>
                   @else
