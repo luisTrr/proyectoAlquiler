@@ -67,15 +67,22 @@
           </div>
 
           <div class="form-group">
-              <label>Recursos Disponibles:</label><br>
+              <label>El precio incluye:</label><br>
+              <input type="checkbox" name="recursos[luz]" value="1"> Luz<br>
+              <input type="checkbox" name="recursos[agua]" value="1"> Agua<br>
 
+              <label>Recursos adicionales (Se pagan aparte):</label><br>
               <input type="checkbox" name="recursos[aguaCaliente]" value="1"> Agua Caliente<br>
               <input type="checkbox" name="recursos[wifi]" value="1"> WiFi<br>
               <input type="checkbox" name="recursos[gasDomiciliario]" value="1"> Gas Domiciliario<br>
+              
+              <label>Permitir mascotas:</label><br>
               <input type="checkbox" name="recursos[mascotas]" value="1"> Mascotas<br>
-              <input type="checkbox" name="recursos[luz]" value="1"> Luz<br>
-              <input type="checkbox" name="recursos[agua]" value="1"> Agua<br>
+              
+              <label>Es residencia Adventista:</label><br>
               <input type="checkbox" name="recursos[residenciaAdventista]" value="1"> Residencia Adventista<br>
+              
+              <label>Se pide hora de llegada:</label><br>
               <input type="checkbox" name="recursos[horaDeLlegada]" value="1"> Hora de Llegada<br>
           </div>
 
