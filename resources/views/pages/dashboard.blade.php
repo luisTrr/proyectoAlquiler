@@ -2,27 +2,141 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Publicaciones'])
-    <div class="container">
-    <div class="row mt-4 mx-4">
-        @foreach($publicaciones as $publicacion)
-        <div class="col-12 d-flex justify-content-center">            
-                <div class="card mb-4 w-70 h-20">
-                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
-                    <div class="card-body">
-                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                        <a href="#" class="btn btn-success">Guardar</a>
+    <div class="container-fluid">
+        <div class="card">
+
+            <div class="card-header">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(0)">
+                            <i class="fa fa-align-justify"></i> Todos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(1)">
+                            <i class="fa fa-home"></i> Casas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(2)">
+                            <i class="fa fa-home"></i> Departamentos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(3)">
+                            <i class="fa fa-home"></i> Garzonier
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(4)">
+                            <i class="fa fa-home"></i> Cuartos
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <div id="tab0" class="tab-content">
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a href="#" class="btn btn-success">Guardar</a>
+                                    </div>
+                                </div>    
+                        </div>
+                        @endforeach
                     </div>
-                </div>    
+                </div>
+
+                <div id="tab1" class="tab-content">
+                    <h1>Casa</h1>
+
+                </div>
+
+                <div id="tab2" class="tab-content">
+                    <h1>Departamento</h1>
+
+                </div>
+
+                <div id="tab3" class="tab-content">
+                    <h1>Garzonier</h1>
+
+                </div>
+
+                <div id="tab4" class="tab-content">
+                    <h1>Cuarto</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a href="#" class="btn btn-success">Guardar</a>
+                                    </div>
+                                </div>    
+                        </div>
+                        @endforeach
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- <div class="card-body">
+                
+            </div>
+
+            <div class="card-body">
+                
+            </div>
+
+            <div class="card-body">
+                
+            </div>
+
+            <div class="card-body">
+                
+            </div> -->
         </div>
-        @endforeach
-    </div>
     </div>
 @include('pages.modal.card')
 @include('layouts.footers.auth.footer')
 @endsection
+<script>
+    function showTab(tabIndex) {
+        for (let i = 0; i <= 4; i++) {
+            document.getElementById('tab' + i).style.display = 'none';
+        }
+        document.getElementById('tab' + tabIndex).style.display = 'block';
+    }
+</script>
+<!-- <script>
+    return{
+        activeTab : 0,
+    }
+</script>
+<style>
 
+    .nav-link.active {
+        background-color: #f8f9fa;
+    }
+    .mostrar{
+    display: list-item !important;
+    opacity: 1 !important;
+    position: absolute !important;
+    background-color: #3c29297a !important;
+    }
+</style> -->
 
 
     <!-- <script src="./assets/js/plugins/chartjs.min.js"></script> -->
