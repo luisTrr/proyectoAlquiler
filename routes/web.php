@@ -41,7 +41,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/ver/{id}', [HomeController::class, 'ver'])->name('ver');
 	Route::post('/store', [HomeController::class, 'store'])->name('store');
 	//PUBLICACIONES
-	Route::get('/buscarPublicacion', [PublicacionesController::class, 'BuscarPublicacion'])->name('BuscarPublicacion');
+	Route::get('/buscarPublicacion/{idOpcionesAlquiler}', [PublicacionesController::class, 'BuscarPublicacion'])->name('BuscarPublicacion');
 	Route::get('/publicaciones-disponibles', [PublicacionesController::class, 'cards'])->name('publicaciones-disponibles');
 	Route::get('/ver-publicacion', [PublicacionesController::class, 'index'])->name('ver-publicacion');
 	Route::post('/crear-publicacion', [PublicacionesController::class, 'crearPublicacion'])->name('crear-publicacion');
