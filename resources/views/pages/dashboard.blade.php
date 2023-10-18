@@ -39,6 +39,7 @@
                 <div id="tab0" class="tab-content">
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
+                        
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -50,29 +51,16 @@
                                     </div>
                                 </div>    
                         </div>
+                        
                         @endforeach
                     </div>
                 </div>
 
                 <div id="tab1" class="tab-content">
-                    <h1>Casa</h1>
-
-                </div>
-
-                <div id="tab2" class="tab-content">
-                    <h1>Departamento</h1>
-
-                </div>
-
-                <div id="tab3" class="tab-content">
-                    <h1>Garzonier</h1>
-
-                </div>
-
-                <div id="tab4" class="tab-content">
-                    <h1>Cuarto</h1>
+                    <h1>Casas</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
+                        @if($publicacion->opciones_alquiler_id == 4)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -84,6 +72,70 @@
                                     </div>
                                 </div>    
                         </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+
+                <div id="tab2" class="tab-content">
+                    <h1>Departamentos</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        @if($publicacion->opciones_alquiler_id == 2)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a href="#" class="btn btn-success">Guardar</a>
+                                    </div>
+                                </div>    
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+
+                <div id="tab3" class="tab-content">
+                    <h1>Garzoniers</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        @if($publicacion->opciones_alquiler_id == 3)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a href="#" class="btn btn-success">Guardar</a>
+                                    </div>
+                                </div>    
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+
+                <div id="tab4" class="tab-content">
+                    <h1>Cuartos</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        @if($publicacion->opciones_alquiler_id == 1)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a href="#" class="btn btn-success">Guardar</a>
+                                    </div>
+                                </div>    
+                        </div>
+                        @endif
                         @endforeach
                     </div>
 
@@ -92,21 +144,6 @@
 
             </div>
 
-            <!-- <div class="card-body">
-                
-            </div>
-
-            <div class="card-body">
-                
-            </div>
-
-            <div class="card-body">
-                
-            </div>
-
-            <div class="card-body">
-                
-            </div> -->
         </div>
     </div>
 @include('pages.modal.card')
@@ -120,23 +157,6 @@
         document.getElementById('tab' + tabIndex).style.display = 'block';
     }
 </script>
-<!-- <script>
-    return{
-        activeTab : 0,
-    }
-</script>
-<style>
-
-    .nav-link.active {
-        background-color: #f8f9fa;
-    }
-    .mostrar{
-    display: list-item !important;
-    opacity: 1 !important;
-    position: absolute !important;
-    background-color: #3c29297a !important;
-    }
-</style> -->
 
 
     <!-- <script src="./assets/js/plugins/chartjs.min.js"></script> -->
