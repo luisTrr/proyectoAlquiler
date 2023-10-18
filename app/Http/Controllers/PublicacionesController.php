@@ -222,5 +222,13 @@ public function eliminarPublicacion($id)
     }
 }
 
-    
+    public function BuscarPublicacion(Request $request, $idOpcionesAlquiler)
+    {
+        // Resto del código para obtener datos según idAlmacen...
+        $publicaciones = Publicaciones::where('opciones_alquiler_id', $idOpcionesAlquiler)->get();
+
+        //return view('inventario', ['publicaciones' => $publicaciones]);
+        return view('pages.dashboard', compact('publicaciones'));
+    }
+   
 }
