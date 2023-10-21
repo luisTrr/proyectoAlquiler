@@ -47,7 +47,7 @@
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                                         <p class="card-text">{{ $publicacion->precio }} Bs</p> 
                                         <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a href="#" class="btn btn-success">Guardar</a>
+                                        <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion',$publicacion->id) }}">Guardar</a>
                                     </div>
                                 </div>    
                         </div>
