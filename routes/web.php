@@ -25,7 +25,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;            
 use App\Http\Controllers\PublicacionesController; 
-use App\Http\Controllers\OpcionesAlquilerController;               
+use App\Http\Controllers\OpcionesAlquilerController;  
+use App\Http\Controllers\GuardarPublicacionController;              
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -52,6 +53,8 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('opciones_alquiler', [OpcionesAlquilerController::class, 'crearOpcionAlquiler']);
 	Route::put('opciones_alquiler', [OpcionesAlquilerController::class, 'actualizarOpcionAlquiler']);
 	Route::delete('opciones_alquiler', [OpcionesAlquilerController::class, 'eliminarOpcionAlquiler']);
+	//GUARDAR PUBLICACION
+	Route::get('/guardar/{id}', [GuardarPublicacionController::class, 'guardarPublicacion'])->name('guardarPublicacion');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

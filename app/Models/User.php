@@ -59,4 +59,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+    public function guardar_publicacions()
+    {
+        return $this->belongsToMany(guardarPublicacion::class, 'guardar_publicacions_intermedia', 'usuario_id', 'guardar_publicacions_id');
+    }
 }
