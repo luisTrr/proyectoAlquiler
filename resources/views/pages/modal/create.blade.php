@@ -26,14 +26,6 @@
             <label for="precio">Precio</label>
             <input type="number" id="precio" name="precio" class="form-control">
           </div>
-          <!-- <div class="form-group">
-              <label for="usuario_id">Usuario</label>
-              <select id="usuario_id" name="usuario_id" class="form-control" required>
-                  @foreach ($user as $OPC)
-                      <option value="{{ $OPC->id }}">{{ $OPC->username }}</option>
-                  @endforeach
-              </select>
-          </div> -->
           <div class="form-group">
             <label for="imagen">Imagen</label>
             <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control">

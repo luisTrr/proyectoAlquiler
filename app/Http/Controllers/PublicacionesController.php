@@ -18,9 +18,8 @@ class PublicacionesController extends Controller
     // }
     public function index()
     {
-        $publicaciones = Publicaciones::all();
-        //$recursos = Recursos::all();
-        $user = User::all();
+        $user = Auth::user();
+        $publicaciones = $user->publicaciones;
         $opcionesAlquiler = Opciones_alquiler::all();
         $alquilerAnticretico = alquiler_anticretico::all();
         return view('pages.publicacion', compact('publicaciones','user','opcionesAlquiler','alquilerAnticretico'));

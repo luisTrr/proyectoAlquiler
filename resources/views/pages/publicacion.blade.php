@@ -36,8 +36,10 @@
                         <td>
                           <!-- <a type="button" class="btn btn-success" onclick="mostrarDetalles({{ $publicacion->id }})" data-toggle="modal" data-target="#Modalcard"><i class="fa fa-eye"></i></a> -->
                           <!-- <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a> -->
-                          <a type="button" class="btn btn-success" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
-                          <a type="button" class="btn btn-danger" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modaldelete" ><i class="fa fa-trash"></i></a>
+                          @if ($publicaciones->count() > 0)
+                                <a type="button" class="btn btn-success" onclick="setEditModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modalupdate"><i class="fa fa-pencil"></i></a>
+                                <a type="button" class="btn btn-danger" onclick="setDeleteModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modaldelete"><i class="fa fa-trash"></i></a>
+                            @endif
                         </td>
                       </tr>
                     @endforeach                        
