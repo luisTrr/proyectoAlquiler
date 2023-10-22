@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(guardarPublicacion::class, 'guardar_publicacions_intermedia', 'usuario_id', 'guardar_publicacions_id');
     }
+    public function hasGuardedPublication($publicacionId)
+    {
+        return $this->guardar_publicacions->where('publicacion_id', $publicacionId)->count() > 0;
+    }
+
 }
