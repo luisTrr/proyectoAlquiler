@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\publicaciones;
+use App\Models\Opciones_alquiler;
+use App\Models\alquiler_anticretico;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\guardarPublicacion;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +40,18 @@ class GuardarPublicacionController extends Controller
         }
 
         return redirect()->back()->with('errorMessage', 'La publicación no se encontraba en tus guardados.');
+    }
+    public function index()
+    {
+        $usuario_id = Auth::id();
+        $usuario = User::find($usuario_id); 
+        $publicaciones = Publicaciones::all();
+        $guardados = $usuario->guardar_publicacions()->get();
+        //$guardados = guardarPublicacion::all();
+        //$recursos = Recursos::all();
+        $opcionesAlquiler = Opciones_alquiler::all();
+        $alquilerAnticretico = alquiler_anticretico::all();
+        return view('pages.tables', compact('publicaciones','guardados','opcionesAlquiler','alquilerAnticretico'));
     }
 
 }

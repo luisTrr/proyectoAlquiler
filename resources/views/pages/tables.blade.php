@@ -10,33 +10,42 @@
                         <h6>Guardados</h6>
                     </div>
                     <div class="row row-cols-3">
-                    @foreach($publicaciones as $publicacion)
-                    <div class="col-4 mb-4"> <!-- Cada tarjeta ocupa 3 columnas (1/4 del ancho total) -->
-                        <div class="card h-100 d-flex flex-column">
-                            <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
-                            <div class="card-body">
-                                <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                                <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                <a type="button" class="btn btn-danger" href="#">Eliminar Guardado</a>
+                        @if (session('errorMessage'))
+                            <div class="alert alert-danger">
+                                {{ session('errorMessage') }}
                             </div>
-                        </div>
-                    </div>
-                    <!-- <div class="card-body">
-                    
-                        <div class="col-4 d-flex justify-content-center">            
-                            <div class="card mb-4 w-70 h-20">
-                            <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                                    <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                    <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                    <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion',$publicacion->id) }}">Guardar</a>
+                        @endif
+                    @foreach($guardados as $guardado)
+                        @foreach($publicaciones as $publicacion)
+                            @if($publicacion->id == $guardado->publicacion_id)
+                            <div class="col-4 mb-4"> <!-- Cada tarjeta ocupa 3 columnas (1/4 del ancho total) -->
+                                <div class="card h-100 d-flex flex-column">
+                                    <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                    </div>
                                 </div>
-                            </div>    
-                        </div>
-                    
-                    </div> -->
+                            </div>
+                        <!-- <div class="card-body">
+                        
+                            <div class="col-4 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion',$publicacion->id) }}">Guardar</a>
+                                    </div>
+                                </div>    
+                            </div>
+                        
+                        </div> -->
+                            @endif
+                        @endforeach
                     @endforeach
                     </div>
 
