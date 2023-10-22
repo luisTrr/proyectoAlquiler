@@ -55,6 +55,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::delete('opciones_alquiler', [OpcionesAlquilerController::class, 'eliminarOpcionAlquiler']);
 	//GUARDAR PUBLICACION
 	Route::get('/guardar/{id}', [GuardarPublicacionController::class, 'guardarPublicacion'])->name('guardarPublicacion');
+	Route::get('/eliminar/{id}', [GuardarPublicacionController::class, 'eliminarGuardado'])->name('eliminarGuardado');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

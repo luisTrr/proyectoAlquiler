@@ -36,25 +36,40 @@
             </div>
 
             <div class="card-body">
-                <div id="tab0" class="tab-content">
-                    <div class="row ">
+            <div id="tab0" class="tab-content">
+                <div class="row">
+                        @if (session('successMessage'))
+                            <div class="alert alert-success">
+                                {{ session('successMessage') }}
+                            </div>
+                        @endif
+
+                        @if (session('errorMessage'))
+                            <div class="alert alert-danger">
+                                {{ session('errorMessage') }}
+                            </div>
+                        @endif
                         @foreach($publicaciones as $publicacion)
-                        
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-12 d-flex justify-content-center">
+                            <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
-                                    <div class="card-body">
-                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                    <p class="card-text">{{ $publicacion->precio }} Bs</p>
+                                    @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
                                         <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion',$publicacion->id) }}">Guardar</a>
-                                    </div>
-                                </div>    
+                                        <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                    @else
+                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                        <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
-                        
                         @endforeach
                     </div>
                 </div>
+
 
                 <div id="tab1" class="tab-content">
                     <h1>Casas</h1>
