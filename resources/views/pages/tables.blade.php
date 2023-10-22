@@ -7,9 +7,43 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h6>Authors table</h6>
+                        <h6>Guardados</h6>
                     </div>
-                    <div class="card-body px-0 pt-0 pb-2">
+                    <div class="row row-cols-3">
+                    @foreach($publicaciones as $publicacion)
+                    <div class="col-4 mb-4"> <!-- Cada tarjeta ocupa 3 columnas (1/4 del ancho total) -->
+                        <div class="card h-100 d-flex flex-column">
+                            <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                            <div class="card-body">
+                                <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                <a type="button" class="btn btn-danger" href="#">Eliminar Guardado</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="card-body">
+                    
+                        <div class="col-4 d-flex justify-content-center">            
+                            <div class="card mb-4 w-70 h-20">
+                            <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                    <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                    <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                    <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion',$publicacion->id) }}">Guardar</a>
+                                </div>
+                            </div>    
+                        </div>
+                    
+                    </div> -->
+                    @endforeach
+                    </div>
+
+                </div>
+            </div>
+        </div>
+                    <!-- <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -211,11 +245,11 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div>
             </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
@@ -466,7 +500,7 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         @include('layouts.footers.auth.footer')
