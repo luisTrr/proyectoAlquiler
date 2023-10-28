@@ -32,6 +32,16 @@
                             <i class="fa fa-home"></i> Cuartos
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(5)">
+                            <i class="fa fa-home"></i> Alquiler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="#" onclick="showTab(6)">
+                            <i class="fa fa-home"></i> Anticretico
+                        </a>
+                    </li>
                 </ul>
             </div>
 
@@ -82,8 +92,13 @@
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                                         <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a href="#" class="btn btn-success">Guardar</a>
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
                                     </div>
                                 </div>    
                         </div>
@@ -103,8 +118,13 @@
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                                         <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a href="#" class="btn btn-success">Guardar</a>
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
                                     </div>
                                 </div>    
                         </div>
@@ -124,8 +144,13 @@
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                                         <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a href="#" class="btn btn-success">Guardar</a>
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
                                     </div>
                                 </div>    
                         </div>
@@ -145,8 +170,13 @@
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
                                         <p class="card-text">{{ $publicacion->precio }} Bs</p> 
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a href="#" class="btn btn-success">Guardar</a>
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
                                     </div>
                                 </div>    
                         </div>
@@ -155,6 +185,57 @@
                     </div>
 
                 </div>
+                <div id="tab5" class="tab-content">
+                    <h1>Alquiler</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        @if($publicacion->alquiler_anticretico_id == 1)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
+                                    </div>
+                                </div>    
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div id="tab6" class="tab-content">
+                    <h1>Anticretico</h1>
+                    <div class="row ">
+                        @foreach($publicaciones as $publicacion)
+                        @if($publicacion->alquiler_anticretico_id == 2)
+                        <div class="col-12 d-flex justify-content-center">            
+                                <div class="card mb-4 w-70 h-20">
+                                <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p> 
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
+                                    </div>
+                                </div>    
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                
 
 
             </div>
@@ -166,7 +247,7 @@
 @endsection
 <script>
     function showTab(tabIndex) {
-        for (let i = 0; i <= 4; i++) {
+        for (let i = 0; i <= 6; i++) {
             document.getElementById('tab' + i).style.display = 'none';
         }
         document.getElementById('tab' + tabIndex).style.display = 'block';
