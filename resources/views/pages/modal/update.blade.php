@@ -1,4 +1,4 @@
-<div class="modal fade" id="Modalupdate" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+<div class="modal fade" id="Modalupdate{{ $publicacion->id }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-info">
@@ -12,14 +12,14 @@
             <form action="{{ route('actualizar-publicacion') }}" method="POST" enctype="multipart/form-data">
             @method('PUT') <!-- Add this line to simulate a PUT request -->
             @csrf <!-- Add CSRF token for Laravel -->
-            <input type="hidden" id="id" name="id" value="{{ $publicacion->id }}">
+            <input type="text" id="id" name="id" value="{{ $publicacion->id }}">
               <div class="form-group">
                 <label for="titulo">Título</label>
-                <input type="text" id="titulo" name="titulo" class="form-control">
+                <input type="text" id="titulo" name="titulo" class="form-control" value="{{ $publicacion->titulo }}" >
               </div>
               <div class="form-group">
                 <label for="descripcion">Descripcion</label>
-                <input type="text" id="descripcion" name="descripcion" class="form-control">
+                <textarea id="descripcion" name="descripcion" class="form-control" rows="4"></textarea >
               </div>
               <div class="form-group">
                 <label for="direccion">Direccion</label>
@@ -109,6 +109,9 @@
     </div>
   </div>
 </div>
+<script>
+  
+</script>
 <!-- <script>
   document.getElementById('editar').addEventListener('click', function() {
     window.location.href = 'publicacion';
