@@ -38,7 +38,8 @@ class PageController extends Controller
 
     public function signin()
     {
-        return view("pages.sign-in-static");
+        $usuarios = Users::all();
+        return view("pages.sign-in-static", compact('usuarios'));
     }
 
     public function signup()
