@@ -236,5 +236,9 @@ public function eliminarPublicacion($id)
         //return view('inventario', ['publicaciones' => $publicaciones]);
         return view('pages.dashboard', compact('publicaciones'));
     }
+    public function asignarRol(){
+        $user = User::all();
+        return view('pages.asignarRoles', compact('user'));
+    }
    
 }
