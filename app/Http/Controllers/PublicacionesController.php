@@ -16,6 +16,13 @@ class PublicacionesController extends Controller
     //     $publicaciones = publicaciones::all();
     //     return ['publicaciones'=>$publicaciones];
     // }
+    public function editarAdmin(){
+        $user = Auth::user();
+        $publicaciones = publicaciones::all();
+        $opcionesAlquiler = Opciones_alquiler::all();
+        $alquilerAnticretico = alquiler_anticretico::all();
+        return view('pages.editarAlquiler', compact('publicaciones','user','opcionesAlquiler','alquilerAnticretico'));
+    }
     public function index()
     {
         $user = Auth::user();
