@@ -49,14 +49,16 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::put('/actualizar-publicacion', [PublicacionesController::class, 'actualizarPublicacion'])->name('actualizar-publicacion');
 	Route::delete('/eliminar-publicacion/{id}', [PublicacionesController::class, 'eliminarPublicacion'])->name('eliminar-publicacion');
 	//OPCIONES ALQUILER
-	Route::get('opciones_alquiler', [OpcionesAlquilerController::class, 'index']);
-	Route::post('opciones_alquiler', [OpcionesAlquilerController::class, 'crearOpcionAlquiler']);
-	Route::put('opciones_alquiler', [OpcionesAlquilerController::class, 'actualizarOpcionAlquiler']);
-	Route::delete('opciones_alquiler', [OpcionesAlquilerController::class, 'eliminarOpcionAlquiler']);
+	Route::get('/opciones_alquiler', [OpcionesAlquilerController::class, 'index'])->name('opciones_alquiler');
+	Route::post('/crearOpcionAlquiler', [OpcionesAlquilerController::class, 'crearOpcionAlquiler'])->name('crearOpcionAlquiler');
+	Route::put('/actualizar_opcion', [OpcionesAlquilerController::class, 'actualizarOpcionAlquiler']);
+	Route::delete('/eliminar_opcion/{id}', [OpcionesAlquilerController::class, 'eliminarOpcionAlquiler']);
 	//GUARDAR PUBLICACION
 	Route::get('/guardar/{id}', [GuardarPublicacionController::class, 'guardarPublicacion'])->name('guardarPublicacion');
 	Route::get('/eliminar/{id}', [GuardarPublicacionController::class, 'eliminarGuardado'])->name('eliminarGuardado');
 	Route::get('tables', [GuardarPublicacionController::class, 'index'])->name('tables');
+	//ADMIN
+	Route::get('/editar-publicacion', [PublicacionesController::class, 'editarAdmin'])->name('editar-publicacion');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

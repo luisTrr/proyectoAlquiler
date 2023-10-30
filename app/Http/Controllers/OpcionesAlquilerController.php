@@ -9,7 +9,7 @@ class OpcionesAlquilerController extends Controller
     public function index()
     {
         $opciones = Opciones_alquiler::all();
-        return response()->json(['opciones' => $opciones], 200);
+        return view('pages.opcionesAlquiler', compact('opciones'));
     }
     public function crearOpcionAlquiler(Request $request)
     {
@@ -21,7 +21,7 @@ class OpcionesAlquilerController extends Controller
             'nombre_opcion' => $request->nombre_opcion
         ]);
 
-        return response()->json(['message' => 'Opción de alquiler creada exitosamente', 'opcion' => $opcion], 201);
+        return redirect()->route('opciones_alquiler');
     }
 
     public function actualizarOpcionAlquiler(Request $request)
@@ -43,20 +43,18 @@ class OpcionesAlquilerController extends Controller
         return response()->json(['message' => 'Opción de alquiler actualizada exitosamente', 'opcion' => $opcion], 200);
     }
 
-    public function eliminarOpcionAlquiler(Request $request)
+    public function eliminarOpcionAlquiler($id)
     {
-        $request->validate([
-            'id' => 'required|exists:opciones_alquiler,id',
-        ]);
 
-        $opcion = Opciones_alquiler::find($request->id);
+        $opcion = Opciones_alquiler::find($id);
 
         if (!$opcion) {
-            return response()->json(['message' => 'Opción de alquiler no encontrada'], 404);
+            return response()->json(['success' => true, 'message' => 'Opcion de alquiler no encontrada.']);
         }
 
         $opcion->delete();
 
-        return response()->json(['message' => 'Opción de alquiler eliminada exitosamente'], 200);
+        return response()->json(['success' => true, 'message' => 'Opcion de alquier eliminada exitosamente.']);
     }
 }
+
