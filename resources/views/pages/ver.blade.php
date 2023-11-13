@@ -115,6 +115,7 @@
           <div class="form-group">
             <strong>Celular:</strong>
             {{ $publicacion->celular }}
+            <a href="https://wa.me/591{{ $publicacion->celular }}?text=Hola me intersa la publicacion" target="_blank"><i class="fa fa-whatsapp text-success"></i></a>
           </div>
           <div class="form-group">
             <strong>Nombre Opción:</strong>
