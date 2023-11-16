@@ -6,6 +6,8 @@ use App\Models\Opciones_alquiler;
 use App\Models\alquiler_anticretico;
 use App\Models\Recursos;
 use App\Models\User;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -238,7 +240,14 @@ public function eliminarPublicacion($id)
     }
     public function asignarRol(){
         $user = User::all();
-        return view('pages.asignarRoles', compact('user'));
+        $roles = Role::all();
+        return view('pages.asignarRoles', compact('user','roles'));
+    }
+    public function asignarRolUsuario(Request $request, string $id){
+        $user = User::find($id);
+        $user->roles()->sync($request->roles);
+
+        return redirect()->route('asignarRol');
     }
    
 }
