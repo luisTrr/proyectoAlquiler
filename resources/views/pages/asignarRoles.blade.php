@@ -1,3 +1,7 @@
+
+@php
+    use Collective\Html\FormFacade as Form;
+@endphp
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
@@ -33,10 +37,47 @@
                         <td>
                           
                           @if ($user->count() > 0)
-                                <a href="" class="btn btn-success"  data-toggle="modal" data-target="#Modalupdate{{ $usuarios->id }}"><i class="fa fa-pencil"></i></a>
+                                <a href="" class="btn btn-success"  data-toggle="modal" data-target="#Modalupdate{{ $usuarios->id }}" data-roles="{{ json_encode($roles )}}"><i class="fa fa-pencil"></i></a>
 
 <!-- Modal UPDATE -->
+<div class="modal fade" id="Modalupdate{{ $usuarios->id }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h4 class="modal-title" id="myModalLabel">Asignar Rol a Usuario</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-header">
+        <p>{{$usuarios->username}}</p>
+        </div>
+        <div class="card-body">
+          <h5>ROLES</h5>
+          
+          <form method="POST" action="{{ route('asignarRolUsuario', $usuarios) }}">
+              @csrf
+              @method('PUT')
 
+              @foreach ($roles as $role)
+              <div>
+                  <label>
+                      <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-1" {{ $usuarios->hasAnyRole($role->id) ? 'checked' : '' }}>
+                      {{ $role->name }}
+                  </label>
+              </div>
+              @endforeach
+
+              <button type="submit" class="btn btn-primary mt-3">Asignar Roles</button>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Modal UPDATE -->
 
 
