@@ -64,6 +64,15 @@
             </li>
             @role('admin')
             <li class="nav-item">
+                <a class="nav-link " href="{{ route('estadoPublicacion') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-exclamation-triangle text-info text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Estado Publicacion</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{  str_contains(request()->url(), 'billing') == true ? 'active' : '' }}" href="{{ route('opciones_alquiler') }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">

@@ -249,5 +249,10 @@ public function eliminarPublicacion($id)
 
         return redirect()->route('asignarRol');
     }
+    public function estadoPublicacion(){
+        $user = Auth::user();
+        $publicaciones = publicaciones::all();
+        return view('pages.estado-publicacion', compact('publicaciones','user'));
+    }
    
 }
