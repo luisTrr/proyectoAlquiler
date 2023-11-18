@@ -22,8 +22,9 @@
                         <th>#</th>
                         <th>Titulo</th>
                         <th>Direccion</th>
-                        <th>Precio</th>
+                        <th>Estado</th>
                         <th width="280px">Opciones</th>
+                        <th width="280px">Habilitar Publicacion</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -32,7 +33,13 @@
                         <td>{{ $publicacion->id }}</td>
                         <td>{{ $publicacion->titulo }}</td>
                         <td>{{ $publicacion->direccion }}</td>
-                        <td>{{ $publicacion->precio }}</td>
+                        <td>
+                            @if($publicacion->estado == 1)
+                                Habilitado
+                            @else
+                                Inhabilitado
+                            @endif
+                        </td>
                         <td>
                           <!-- <a type="button" class="btn btn-success" onclick="mostrarDetalles({{ $publicacion->id }})" data-toggle="modal" data-target="#Modalcard"><i class="fa fa-eye"></i></a> -->
                           <!-- <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a> -->
@@ -131,6 +138,12 @@
 <!-- Modal UPDATE -->
                                 
                                 <a type="button" class="btn btn-danger" onclick="setDeleteModalId('{{ $publicacion->id }}')" data-toggle="modal" data-target="#Modaldelete"><i class="fa fa-trash"></i></a>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($publicaciones->count() > 0)
+                                <a href="{{ route('activarPublicacion',$publicacion->id) }}" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                <a href="{{ route('desactivarPublicacion',$publicacion->id) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
                             @endif
                         </td>
                       </tr>

@@ -60,6 +60,7 @@
                             </div>
                         @endif
                         @foreach($publicaciones as $publicacion)
+                        @if($publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">
                             <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -76,6 +77,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
@@ -85,7 +87,7 @@
                     <h1>Casas</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->opciones_alquiler_id == 4)
+                        @if($publicacion->opciones_alquiler_id == 4 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -111,7 +113,7 @@
                     <h1>Departamentos</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->opciones_alquiler_id == 2)
+                        @if($publicacion->opciones_alquiler_id == 2 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -137,7 +139,7 @@
                     <h1>Garzoniers</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->opciones_alquiler_id == 3)
+                        @if($publicacion->opciones_alquiler_id == 3 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -163,7 +165,7 @@
                     <h1>Cuartos</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->opciones_alquiler_id == 1)
+                        @if($publicacion->opciones_alquiler_id == 1 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -189,7 +191,7 @@
                     <h1>Alquiler</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->alquiler_anticretico_id == 1)
+                        @if($publicacion->alquiler_anticretico_id == 1 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
@@ -214,7 +216,7 @@
                     <h1>Anticretico</h1>
                     <div class="row ">
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->alquiler_anticretico_id == 2)
+                        @if($publicacion->alquiler_anticretico_id == 2 && $publicacion->estado == 1)
                         <div class="col-12 d-flex justify-content-center">            
                                 <div class="card mb-4 w-70 h-20">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
