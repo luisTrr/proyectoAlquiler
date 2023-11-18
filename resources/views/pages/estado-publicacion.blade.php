@@ -21,21 +21,28 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($publicaciones as $publicacion)
-                      <tr>
-                        <td>{{ $publicacion->id }}</td>
-                        <td>{{ $publicacion->titulo }}</td>
-                        <td>{{ $publicacion->direccion }}</td>
-                        <td>Habilitado</td>
-                        <td>
-                          @if ($publicaciones->count() > 0)
-                                <a href="" class="btn btn-success" ><i class="fa fa-check"></i></a>
-                                <a href="" class="btn btn-danger" ><i class="fa fa-times"></i></a>
-                            @endif
-                        </td>
-                      </tr>
-                    @endforeach                        
+                        @foreach($publicaciones as $publicacion)
+                            <tr>
+                                <td>{{ $publicacion->id }}</td>
+                                <td>{{ $publicacion->titulo }}</td>
+                                <td>{{ $publicacion->direccion }}</td>
+                                <td>
+                                    @if($publicacion->estado == 1)
+                                        Habilitado
+                                    @else
+                                        Inhabilitado
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($publicaciones->count() > 0)
+                                        <a href="{{ route('activarPublicacion',$publicacion->id) }}" class="btn btn-success"><i class="fa fa-check"></i></a>
+                                        <a href="{{ route('desactivarPublicacion',$publicacion->id) }}" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach                        
                     </tbody>
+
                   </table>
                 </div>
             </div>
@@ -44,3 +51,4 @@
   @include('layouts.footers.auth.footer')
 
 @endsection
+

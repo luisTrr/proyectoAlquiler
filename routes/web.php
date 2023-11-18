@@ -62,6 +62,9 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/asignarRol', [PublicacionesController::class, 'asignarRol'])->name('asignarRol');
 	Route::put('/asignarRolUsuario/{id}', [PublicacionesController::class, 'asignarRolUsuario'])->name('asignarRolUsuario');
 	Route::get('/estadoPublicacion', [PublicacionesController::class, 'estadoPublicacion'])->name('estadoPublicacion');
+	//ESTADO PUBLICACION
+	Route::get('/activarPublicacion/{id}', [PublicacionesController::class, 'activarPublicacion'])->name('activarPublicacion');
+	Route::get('/desactivarPublicacion/{id}', [PublicacionesController::class, 'desactivarPublicacion'])->name('desactivarPublicacion');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');

@@ -254,5 +254,43 @@ public function eliminarPublicacion($id)
         $publicaciones = publicaciones::all();
         return view('pages.estado-publicacion', compact('publicaciones','user'));
     }
+    public function activarPublicacion($id)
+    {
+        try {
+            // Encuentra la publicación por su ID
+            $publicacion = publicaciones::findOrFail($id);
+
+            // Cambia el estado a 1
+            $publicacion->estado = 1;
+
+            // Guarda los cambios en la base de datos
+            $publicacion->save();
+
+            // Puedes agregar un mensaje de éxito o redireccionar a otra página
+            return redirect()->route('editar-publicacion')->with('success', 'Estado de la publicación cambiado correctamente.');
+        } catch (\Exception $e) {
+            // Puedes manejar errores aquí, por ejemplo, redireccionar con un mensaje de error
+            return redirect()->route('editar-publicacion')->with('error', 'Error al cambiar el estado de la publicación.');
+        }
+    }
+    public function desactivarPublicacion($id)
+    {
+        try {
+            // Encuentra la publicación por su ID
+            $publicacion = publicaciones::findOrFail($id);
+
+            // Cambia el estado a 0
+            $publicacion->estado = 0;
+
+            // Guarda los cambios en la base de datos
+            $publicacion->save();
+
+            // Puedes agregar un mensaje de éxito o redireccionar a otra página
+            return redirect()->route('editar-publicacion')->with('success', 'Estado de la publicación cambiado correctamente.');
+        } catch (\Exception $e) {
+            // Puedes manejar errores aquí, por ejemplo, redireccionar con un mensaje de error
+            return redirect()->route('editar-publicacion')->with('error', 'Error al cambiar el estado de la publicación.');
+        }
+    }
    
 }
