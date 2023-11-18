@@ -19,11 +19,15 @@ class PublicacionesController extends Controller
     //     return ['publicaciones'=>$publicaciones];
     // }
     public function editarAdmin(){
-        $user = Auth::user();
+        //$user = Auth::user();
         $publicaciones = publicaciones::all();
+        foreach ($publicaciones as $publicacion) {
+            $usuario = User::find($publicacion->usuario_id);
+            $publicacion->usuario = $usuario;
+        }
         $opcionesAlquiler = Opciones_alquiler::all();
         $alquilerAnticretico = alquiler_anticretico::all();
-        return view('pages.editarAlquiler', compact('publicaciones','user','opcionesAlquiler','alquilerAnticretico'));
+        return view('pages.editarAlquiler', compact('publicaciones','opcionesAlquiler','alquilerAnticretico'));
     }
     public function index()
     {

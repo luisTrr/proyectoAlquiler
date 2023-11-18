@@ -7,12 +7,7 @@
             <div class="card mb-4">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Publicaciones UAB
-                <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Modal" 
-                        data-user="{{ json_encode($user )}}"
-                        data-opciones-alquiler="{{ json_encode($opcionesAlquiler) }}" 
-                        data-alquiler-anticretico="{{ json_encode($alquilerAnticretico) }}">
-                    <i class="icon-plus"></i>&nbsp;Nuevo
-                </button> -->
+                
             </div>
 
                 <div class="table-responsive">
@@ -21,8 +16,8 @@
                       <tr>
                         <th>#</th>
                         <th>Titulo</th>
-                        <th>Direccion</th>
                         <th>Estado</th>
+                        <th>Info Usuario</th>
                         <th width="280px">Opciones</th>
                         <th width="280px">Habilitar Publicacion</th>
                       </tr>
@@ -32,7 +27,6 @@
                       <tr>
                         <td>{{ $publicacion->id }}</td>
                         <td>{{ $publicacion->titulo }}</td>
-                        <td>{{ $publicacion->direccion }}</td>
                         <td>
                             @if($publicacion->estado == 1)
                                 Habilitado
@@ -41,11 +35,36 @@
                             @endif
                         </td>
                         <td>
+                            @if ($publicaciones->count() > 0)
+                                <a href="" class="btn btn-success"  data-toggle="modal" data-target="#ModalinfoUsuario{{ $publicacion->id }}"><i class="fa fa-eye"></i></a>
+                            @endif
+                        </td>
+                        <td>
                           <!-- <a type="button" class="btn btn-success" onclick="mostrarDetalles({{ $publicacion->id }})" data-toggle="modal" data-target="#Modalcard"><i class="fa fa-eye"></i></a> -->
                           <!-- <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modalread"><i class="fa fa-eye"></i></a> -->
                           @if ($publicaciones->count() > 0)
                                 <a href="" class="btn btn-success"  data-toggle="modal" data-target="#Modalupdate{{ $publicacion->id }}"><i class="fa fa-pencil"></i></a>
-
+<!-- Modal INFOUSUARIO -->
+<div class="modal fade" id="ModalinfoUsuario{{ $publicacion->id }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+ <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-info">
+        <h4 class="modal-title" id="myModalLabel">INFORMACION DEL USUARIO</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Nombre:</strong> {{ $publicacion->usuario->firstname }} {{ $publicacion->usuario->lastname }}</p>
+        <p><strong>Email:</strong> {{ $publicacion->usuario->email }}</p>
+        <p><strong>Ciudad:</strong> {{ $publicacion->usuario->city }}</p>
+        <p><strong>Direccion:</strong> {{ $publicacion->usuario->address }}</p>
+        <p><strong>Celular:</strong> {{ $publicacion->usuario->postal }} <a href="https://wa.me/591{{ $publicacion->usuario->postal }}?text=Me comunico para verificar tu publicacion" target="_blank"><i class="fa fa-whatsapp text-success"></i></a></p>
+      </div>
+    </div>
+ </div>
+</div>
+<!-- Modal INFOUSUARIO -->
 <!-- Modal UPDATE -->
 <div class="modal fade" id="Modalupdate{{ $publicacion->id }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
   <div class="modal-dialog" role="document">
