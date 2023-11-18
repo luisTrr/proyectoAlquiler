@@ -117,8 +117,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="example-text-input" class="form-control-label">Codigo Postal</label>
-                                        <input class="form-control" type="text" name="postal" value="{{ old('postal', auth()->user()->postal) }}">
+                                        <label for="example-text-input" class="form-control-label">Culular</label>
+                                        <input class="form-control" type="number" name="postal" value="{{ old('postal', auth()->user()->postal) }}">
                                     </div>
                                 </div>
                             </div>
