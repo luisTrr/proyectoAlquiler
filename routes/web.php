@@ -62,6 +62,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/asignarRol', [PublicacionesController::class, 'asignarRol'])->name('asignarRol');
 	Route::put('/asignarRolUsuario/{id}', [PublicacionesController::class, 'asignarRolUsuario'])->name('asignarRolUsuario');
 	Route::get('/estadoPublicacion', [PublicacionesController::class, 'estadoPublicacion'])->name('estadoPublicacion');
+	Route::get('/mapa', [PublicacionesController::class, 'mapa'])->name('mapa');
 	//ESTADO PUBLICACION
 	Route::get('/activarPublicacion/{id}', [PublicacionesController::class, 'activarPublicacion'])->name('activarPublicacion');
 	Route::get('/desactivarPublicacion/{id}', [PublicacionesController::class, 'desactivarPublicacion'])->name('desactivarPublicacion');
