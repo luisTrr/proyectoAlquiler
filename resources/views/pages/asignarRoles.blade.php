@@ -61,12 +61,12 @@
               @method('PUT')
 
               @foreach ($roles as $role)
-              <div>
-                  <label>
-                      <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-1" {{ $usuarios->hasAnyRole($role->id) ? 'checked' : '' }}>
-                      {{ $role->name }}
-                  </label>
-              </div>
+                  <div>
+                      <label>
+                          <input type="checkbox" name="roles[]" value="{{ $role->id }}" class="mr-1" {{ $usuarios->hasRole($role->name) ? 'checked' : '' }}>
+                          {{ $role->name }}
+                      </label>
+                  </div>
               @endforeach
 
               <button type="submit" class="btn btn-primary mt-3">Asignar Roles</button>
