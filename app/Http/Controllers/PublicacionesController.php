@@ -77,15 +77,18 @@ class PublicacionesController extends Controller
 public function crearPublicacion(Request $request)
 {
     // Validar los datos enviados desde el formulario
+    // dd($request->all());
     $request->validate([
         'titulo' => 'required|max:100',
         'descripcion' => 'required',
-        'direccion' => 'required|max:200',
+        'direccion' => 'max:200',
         'precio' => 'required|numeric|min:0',
         'imagen' => 'required|max:191',
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
         'celular' => 'required|numeric|min:7',
+        'longitud' => 'required|max:200',
+        'latitud' => 'required|max:200',
     ]);
 
     $usuario_id = Auth::id();
@@ -111,6 +114,8 @@ public function crearPublicacion(Request $request)
         'opciones_alquiler_id' => $request->opciones_alquiler_id,
         'alquiler_anticretico_id' => $request->alquiler_anticretico_id,
         'celular' => $request->celular,
+        'longitud' => $request->longitud,
+        'latitud' => $request->latitud,
     ]);
 
     // Crear un nuevo recurso con los valores proporcionados
@@ -291,6 +296,11 @@ public function eliminarPublicacion($id)
             // Puedes manejar errores aquí, por ejemplo, redireccionar con un mensaje de error
             return redirect()->route('editar-publicacion')->with('error', 'Error al cambiar el estado de la publicación.');
         }
+    }
+
+    public function mapa(){
+        $user = Auth::user();
+        return view('pages.mapa', compact('user'));
     }
    
 }
