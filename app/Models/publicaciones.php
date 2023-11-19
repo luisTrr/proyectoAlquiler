@@ -19,6 +19,8 @@ class publicaciones extends Model
         'opciones_alquiler_id',
         'alquiler_anticretico_id',
         'celular',
+        'longitud',
+        'latitud',
     ];
     public function usuario()
     {

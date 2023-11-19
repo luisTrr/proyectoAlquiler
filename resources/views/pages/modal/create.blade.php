@@ -24,13 +24,12 @@
             <!-- <a href="{{ route('mapa') }}" target="_blank"><i class="fa fa-map-marker text-success"></i></a> -->
             <div class="row">
               <div class="col-md-6">
-                    <label for="latitud">Latitud</label>
-                    <input type="text" id="latitud" name="latitud" class="form-control">
-                </div>
-
-                <div class="col-md-6">
                     <label for="longitud">Longitud</label>
                     <input type="text" id="longitud" name="longitud" class="form-control">
+                </div>
+              <div class="col-md-6">
+                    <label for="latitud">Latitud</label>
+                    <input type="text" id="latitud" name="latitud" class="form-control">
                 </div>
               </div>
             </div>
