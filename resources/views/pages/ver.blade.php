@@ -12,9 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style>
-    body {
+    /* body {
       background-color: black;
-    }
+    } */
     .mx-n2 {
         margin: -0.5rem;
     }
@@ -42,9 +42,9 @@
       transition: transform 0.3s;
     }
 
-    .card:hover {
+    /* .card:hover {
       transform: scale(1.20);
-    }
+    } */
     .card-body {
       background-color: #ffffff;
       border-bottom-left-radius: 10px;
@@ -90,9 +90,9 @@
 </head>
 <body>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">   
+<!-- <div class="container"> -->
+  <div class="row row-cols-2">
+    <div class="col-4 mb-4">
       <div class="card">
         <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
         <div class="card-body">
@@ -108,9 +108,7 @@
             <strong>Dirección:</strong>
             {{ $publicacion->direccion }}
           </div>
-          <div class="col-md-12">
-            <div id="mapa" style="width: 100%; height: 400px;"></div>
-          </div>
+          
           <div class="form-group">
             <strong>Precio:</strong>
             {{ $publicacion->precio }}
@@ -128,36 +126,24 @@
             <strong>Estado:</strong>
             {{ $publicacion->alquilerAnticretico->nombreAlquiler }}
           </div>
-          <div class="form-group">
+          
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Atrás</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-8 mb-8">
+      <div class="col-md-12">
+        <div id="mapa" style="width: 100%; height: 390px;"></div>
+      </div>
+      <div class="form-group">
             <strong>El precio incluye:</strong>
-            <!-- <ul>
-            <div class="card mx-4 w-50 h-20 d-flex align-items-center">  
-            <li>
-                <strong>Luz:</strong>
-
-                @if ($recursos[0]->luz)
-                  <i class="fa fa-lightbulb-o text-success"></i>
-                @else
-                  <i class="fa fa-lightbulb-o text-danger"></i>No Disponible
-                @endif
-              
-              </li>
-              
-              <li>
-                <strong>Agua:</strong> 
-                @if ($recursos[0]->agua)
-                  <i class="fa fa-tint text-success"></i> 
-                @else
-                  <i class="fa fa-tint text-danger"></i> No Disponible
-                @endif
-              </li>
-              </div>
-            </ul>     -->
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                    @if ($recursos[0]->luz)    
+                    @if ($recursos[0]->luz)
                     <div class="custom-icon bg-success shadow text-center border-radius-lg">
                       <i class="fas fa-lightbulb opacity-10"></i>
                     @else
@@ -167,18 +153,10 @@
                     </div>
                     </div>
                       <h6 class="text-center mb-0 custom-title text-light">Luz</h6>
-                    <!-- <div class="card-body custom-card-body text-center">
-                        
-                        @if ($recursos[0]->luz)
-                            <h5 class="mb-0">Disponible</h5>
-                        @else
-                            <h5 class="mb-0">No Disponible</h5>
-                        @endif
-                    </div> -->
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
                   @if ($recursos[0]->agua)
@@ -199,10 +177,10 @@
           <div class="form-group">
             <strong>Recursos adicionales (Se pagan aparte):</strong>
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                    @if ($recursos[0]->aguaCaliente) 
+                    @if ($recursos[0]->aguaCaliente)
                     <div class="custom-icon bg-success shadow text-center border-radius-lg">
                       <i class="fa fa-shower opacity-10"></i>
                     @else
@@ -215,7 +193,7 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
                   @if ($recursos[0]->wifi)
@@ -231,7 +209,7 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-4">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
                   @if ($recursos[0]->gasDomiciliario)
@@ -248,13 +226,14 @@
               </div>
             </div>
           </div>
+          <div class="row row-cols-3">
           <div class="form-group">
             <strong>Permiten mascotas:</strong>
             <div class="row">
               <div class="col-md-3">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                  @if ($recursos[0]->mascotas) 
+                  @if ($recursos[0]->mascotas)
                   <div class="custom-icon bg-success shadow text-center border-radius-lg">
                     <i class="fas fa-dog opacity-10"></i>
                   @else
@@ -274,7 +253,7 @@
               <div class="col-md-3">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                  @if ($recursos[0]->residenciaAdventista) 
+                  @if ($recursos[0]->residenciaAdventista)
                   <div class="custom-icon bg-success shadow text-center border-radius-lg">
                     <i class="fas fa-home opacity-10"></i>
                   @else
@@ -294,7 +273,7 @@
               <div class="col-md-3">
                 <div class="card custom-card mx-2 mb-2 bg-dark">
                   <div class="card-header mx-2 p-2 text-center">
-                  @if ($recursos[0]->horaDeLlegada) 
+                  @if ($recursos[0]->horaDeLlegada)
                   <div class="custom-icon bg-success shadow text-center border-radius-lg">
                     <i class="fa fa-clock-o opacity-10"></i>
                   @else
@@ -307,25 +286,12 @@
                 </div>
               </div>
             </div>
-            <!-- <ul>
-              <li>
-                Hora de Llegada: 
-                @if ($recursos[0]->horaDeLlegada)
-                  <i class="fas fa-check text-success"></i> Disponible
-                @else
-                  <i class="fas fa-times text-danger"></i> No Disponible
-                @endif
-              </li>
-            </ul> -->
           </div>
-        </div>
-        <div class="col-12 d-flex justify-content-center">
-          <a href="{{ url()->previous() }}" class="btn btn-primary btn-back">Atrás</a>
-        </div>  
-      </div>
+          </div>
+          
     </div>
   </div>
-</div>
+<!-- </div> -->
 <script>
     function iniciarMapa(){
       var latitud = {{ $publicacion->latitud }};

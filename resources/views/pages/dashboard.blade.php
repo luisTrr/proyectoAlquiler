@@ -46,11 +46,11 @@
             </div>
 
             <div class="card-body">
-            <div id="tab0" class="tab-content">
-                <div class="row">
-                        @if (session('successMessage'))
-                            <div class="alert alert-success">
-                                {{ session('successMessage') }}
+                <div id="tab0" class="tab-content">
+                    <div class="row row-cols-3">
+                        @if (session('errorMessage'))
+                            <div class="alert alert-danger">
+                                {{ session('errorMessage') }}
                             </div>
                         @endif
 
@@ -60,36 +60,37 @@
                             </div>
                         @endif
                         @foreach($publicaciones as $publicacion)
-                        @if($publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">
-                            <div class="card mb-4 w-70 h-20">
+                            @if($publicacion->estado == 1)
+                            <div class="col-4 mb-4"> <!-- Cada tarjeta ocupa 3 columnas (1/4 del ancho total) -->
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
-                                <div class="card-body">
-                                    <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
-                                    <p class="card-text">{{ $publicacion->precio }} Bs</p>
-                                    @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
-                                    @else
-                                        <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
-                                        <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
-                                    @endif
+                                    <div class="card-body">
+                                        <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
+                                        <p class="card-text">{{ $publicacion->precio }} Bs</p>
+                                        @if (Auth::check() && Auth::user()->hasGuardedPublication($publicacion->id))
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-danger" href="{{ route('eliminarGuardado', $publicacion->id) }}">Eliminar Guardado</a>
+                                        @else
+                                            <a type="button" class="btn btn-primary" href="{{ route('ver',$publicacion->id) }}">Detalles</a>
+                                            <a type="button" class="btn btn-success" href="{{ route('guardarPublicacion', $publicacion->id) }}">Guardar</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        @endif
+                            @endif
                         @endforeach
+                        </div>
                     </div>
                 </div>
 
 
                 <div id="tab1" class="tab-content">
                     <h1>Casas</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->opciones_alquiler_id == 4 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
@@ -111,11 +112,11 @@
 
                 <div id="tab2" class="tab-content">
                     <h1>Departamentos</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->opciones_alquiler_id == 2 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
@@ -137,11 +138,11 @@
 
                 <div id="tab3" class="tab-content">
                     <h1>Garzoniers</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->opciones_alquiler_id == 3 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
@@ -163,11 +164,11 @@
 
                 <div id="tab4" class="tab-content">
                     <h1>Cuartos</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->opciones_alquiler_id == 1 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
@@ -189,11 +190,11 @@
                 </div>
                 <div id="tab5" class="tab-content">
                     <h1>Alquiler</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->alquiler_anticretico_id == 1 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
@@ -214,11 +215,11 @@
                 </div>
                 <div id="tab6" class="tab-content">
                     <h1>Anticretico</h1>
-                    <div class="row ">
+                    <div class="row row-cols-3">
                         @foreach($publicaciones as $publicacion)
                         @if($publicacion->alquiler_anticretico_id == 2 && $publicacion->estado == 1)
-                        <div class="col-12 d-flex justify-content-center">            
-                                <div class="card mb-4 w-70 h-20">
+                        <div class="col-4 mb-4">            
+                                <div class="card h-100 d-flex flex-column">
                                 <img src="{{ asset('storage/imagenesPublicacion/' . basename($publicacion->imagen)) }}" class="card-img-top" alt="Imagen de la publicación">
                                     <div class="card-body">
                                         <h5 class="card-title font-weight-bold">{{ $publicacion->titulo }}</h5>
