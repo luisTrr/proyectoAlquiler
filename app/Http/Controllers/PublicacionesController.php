@@ -91,8 +91,6 @@ public function crearPublicacion(Request $request)
         'opciones_alquiler_id' => 'required|exists:opciones_alquiler,id',
         'alquiler_anticretico_id' => 'required|exists:alquiler_anticretico,id',
         'celular' => 'required|numeric|min:7',
-        'longitud' => 'required|max:200',
-        'latitud' => 'required|max:200',
     ]);
 
     $usuario_id = Auth::id();
