@@ -100,28 +100,33 @@
             <strong class="card-title">Título:</strong>
             {{ $publicacion->titulo }}
           </div>
+          <br>
           <div class="form-group">
             <strong>Descripción:</strong>
             {{ $publicacion->descripcion }}
           </div>
+          <br>
           <div class="form-group">
             <strong>Dirección:</strong>
             {{ $publicacion->direccion }}
           </div>
-          
+          <br>
           <div class="form-group">
             <strong>Precio:</strong>
             {{ $publicacion->precio }}
           </div>
+          <br>
           <div class="form-group">
             <strong>Celular:</strong>
             {{ $publicacion->celular }}
             <a href="https://wa.me/591{{ $publicacion->celular }}?text=Hola me intersa la publicacion" target="_blank"><i class="fa fa-whatsapp text-success"></i></a>
           </div>
+          <br>
           <div class="form-group">
             <strong>Nombre Opción:</strong>
             {{ $publicacion->opcionesAlquiler->nombre_opcion }}
           </div>
+          <br>
           <div class="form-group">
             <strong>Estado:</strong>
             {{ $publicacion->alquilerAnticretico->nombreAlquiler }}
