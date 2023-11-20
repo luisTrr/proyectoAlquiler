@@ -302,7 +302,8 @@ public function eliminarPublicacion($id)
 
     public function mapa(){
         $user = Auth::user();
-        return view('pages.mapa', compact('user'));
+        $publicaciones = publicaciones::all();
+        return view('pages.mapa', compact('user', 'publicaciones'));
     }
    
 }
