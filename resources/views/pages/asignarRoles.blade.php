@@ -86,7 +86,7 @@
 
 <!-- MODAL CREATE -->
 
-                                <a type="button" class="btn btn-danger" onclick="setEditModalId('{{ $usuarios->id }}')" data-toggle="modal" data-target="#Modaldelete"><i class="fa fa-trash"></i></a>
+                                <!-- <a type="button" class="btn btn-danger" onclick="setEditModalId('{{ $usuarios->id }}')" data-toggle="modal" data-target="#Modaldelete"><i class="fa fa-trash"></i></a> -->
 <!-- MODAL DELETE -->
 
 <!-- MODAL DELETE -->            

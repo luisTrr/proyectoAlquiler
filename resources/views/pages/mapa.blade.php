@@ -4,7 +4,7 @@
     @include('layouts.navbars.auth.topnav', ['title' => 'Mapa'])
     <div class="row mt-4 mx-4">
         <div class="col-md-12">
-            <div id="mapa" style="width: 100%; height: 700px;"></div>
+            <div id="mapa" style="width: 100%; height: 800px;"></div>
         </div>
     </div>
 
