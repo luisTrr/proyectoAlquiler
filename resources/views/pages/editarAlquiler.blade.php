@@ -99,21 +99,22 @@
               </div>
               <div class="form-group">
                 <label for="imagen">Imagen</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control" >
+                <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control" value="{{ $publicacion->imagen }}">
               </div>
               <div class="form-group">
                   <label for="opciones_alquiler_id">Opciones de Alquiler</label>
                   <select id="opciones_alquiler_id" name="opciones_alquiler_id" class="form-control" required>
                       @foreach ($opcionesAlquiler as $OPC)
-                          <option value="{{ $OPC->id }}">{{ $OPC->nombre_opcion }}</option>
+                          <option value="{{ $OPC->id }}" @if($publicacion->opciones_alquiler_id == $OPC->id) selected @endif>{{ $OPC->nombre_opcion }}</option>
                       @endforeach
                   </select>
               </div>
+
               <div class="form-group">
                   <label for="alquiler_anticretico_id">Alquiler o Anticretico</label>
                   <select id="alquiler_anticretico_id" name="alquiler_anticretico_id" class="form-control" required>
                       @foreach ($alquilerAnticretico as $OPC)
-                          <option value="{{ $OPC->id }}">{{ $OPC->nombreAlquiler }}</option>
+                          <option value="{{ $OPC->id }}" @if($publicacion->alquiler_anticretico_id == $OPC->id) selected @endif>{{ $OPC->nombreAlquiler }}</option>
                       @endforeach
                   </select>
               </div>
@@ -122,26 +123,24 @@
                 <input type="number" id="celular" name="celular" class="form-control" value="{{ $publicacion->celular }}">
               </div>
               <div class="form-group">
-
                   <label>El precio incluye:</label><br>
-                  <input type="checkbox" name="recursos[luz]" value="1"> Luz<br>
-                  <input type="checkbox" name="recursos[agua]" value="1"> Agua<br>
+                  <input type="checkbox" name="recursos[luz]" value="1" @if($publicacion->recursos->contains('luz', 1)) checked @endif> Luz<br>
+                  <input type="checkbox" name="recursos[agua]" value="1" @if($publicacion->recursos->contains('agua', 1)) checked @endif> Agua<br>
 
                   <label>Recursos adicionales (Se pagan aparte):</label><br>
-                  <input type="checkbox" name="recursos[aguaCaliente]" value="1"> Agua Caliente<br>
-                  <input type="checkbox" name="recursos[wifi]" value="1"> WiFi<br>
-                  <input type="checkbox" name="recursos[gasDomiciliario]" value="1"> Gas Domiciliario<br>
-                  
-                  <label>Permitir mascotas:</label><br>
-                  <input type="checkbox" name="recursos[mascotas]" value="1"> Mascotas<br>
-                  
-                  <label>Es residencia Adventista:</label><br>
-                  <input type="checkbox" name="recursos[residenciaAdventista]" value="1"> Residencia Adventista<br>
-                  
-                  <label>Se pide hora de llegada:</label><br>
-                  <input type="checkbox" name="recursos[horaDeLlegada]" value="1"> Hora de Llegada<br>
-              </div>
+                  <input type="checkbox" name="recursos[aguaCaliente]" value="1" @if($publicacion->recursos->contains('aguaCaliente', 1)) checked @endif> Agua Caliente<br>
+                  <input type="checkbox" name="recursos[wifi]" value="1" @if($publicacion->recursos->contains('wifi', 1)) checked @endif> WiFi<br>
+                  <input type="checkbox" name="recursos[gasDomiciliario]" value="1" @if($publicacion->recursos->contains('gasDomiciliario', 1)) checked @endif> Gas Domiciliario<br>
 
+                  <label>Permitir mascotas:</label><br>
+                  <input type="checkbox" name="recursos[mascotas]" value="1" @if($publicacion->recursos->contains('mascotas', 1)) checked @endif> Mascotas<br>
+
+                  <label>Es residencia Adventista:</label><br>
+                  <input type="checkbox" name="recursos[residenciaAdventista]" value="1" @if($publicacion->recursos->contains('residenciaAdventista', 1)) checked @endif> Residencia Adventista<br>
+
+                  <label>Se pide hora de llegada:</label><br>
+                  <input type="checkbox" name="recursos[horaDeLlegada]" value="1" @if($publicacion->recursos->contains('horaDeLlegada', 1)) checked @endif> Hora de Llegada<br>
+              </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="submit" class="btn btn-primary" id="editar">Editar</button>
