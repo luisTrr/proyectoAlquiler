@@ -132,7 +132,6 @@ public function crearPublicacion(Request $request)
 
 public function actualizarPublicacion(Request $request)
 {
-    dd($request->all());
     //dd($request->input('recursos', []));
     // Validar los datos enviados desde el formulario
     $request->validate([
