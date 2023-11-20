@@ -72,6 +72,12 @@
                 </a>
             </li>
             @role('admin')
+            <li class="nav-item mt-3 d-flex align-items-center">
+                <div class="ps-4">
+                    <i class="fa fa-cogs" style="color: #black;"></i>
+                </div>
+                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Opciones Admin</h6>
+            </li>
             <li class="nav-item">
                 <a class="nav-link " href="{{ route('estadoPublicacion') }}">
                     <div

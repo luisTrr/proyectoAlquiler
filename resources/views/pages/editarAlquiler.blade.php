@@ -18,6 +18,7 @@
                         <th>Titulo</th>
                         <th>Estado</th>
                         <th>Info Usuario</th>
+                        <th>Info Publicacion</th>
                         <th width="280px">Opciones</th>
                         <th width="280px">Habilitar Publicacion</th>
                       </tr>
@@ -37,6 +38,11 @@
                         <td>
                             @if ($publicaciones->count() > 0)
                                 <a href="" class="btn btn-success"  data-toggle="modal" data-target="#ModalinfoUsuario{{ $publicacion->id }}"><i class="fa fa-eye"></i></a>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($publicaciones->count() > 0)
+                                <a href="{{ route('ver',$publicacion->id) }}" class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
                             @endif
                         </td>
                         <td>
