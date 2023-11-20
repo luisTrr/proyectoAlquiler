@@ -3,22 +3,6 @@
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Mapa'])
     <div class="row mt-4 mx-4">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="latitud">Latitud</label>
-                <input type="text" id="latitud" class="form-control">
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="longitud">Longitud</label>
-                <input type="text" id="longitud" class="form-control">
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-4 mx-4">
         <div class="col-md-12">
             <div id="mapa" style="width: 100%; height: 700px;"></div>
         </div>
@@ -71,7 +55,7 @@
                     precio: '{{ $publicacion->precio }}',
                     celular: '{{ $publicacion->celular }}'
                 };
-                generarMapa(mapa, coordenadas_{{ $publicacion->id }}, detalles_{{ $publicacion->id }});
+                generarMapa(mapa, coordenadas_{{ $publicacion->id }}, detalles_{{ $publicacion->id }}, {{ $publicacion->id }});
             @endif
         @endforeach
     }
@@ -86,7 +70,7 @@
         }
     }
 
-    function generarMapa(mapa, coordenadas, detalles) {
+    function generarMapa(mapa, coordenadas, detalles, publicacionId) {
         var marcador = new google.maps.Marker({
             map: mapa,
             draggable: false,
@@ -109,6 +93,15 @@
             infoWindow.open(mapa, marcador);
         });
 
+        // Agregar evento de clic al marcador
+        marcador.addListener('click', function() {
+            // Obtener la URL con el ID de la publicación
+            var url = '{{ route("ver", ":id") }}'.replace(':id', publicacionId);
+            
+            // Redirigir a la URL
+            window.location.href = url;
+        });
+
         // Agregar evento para cerrar ventana de información al quitar el ratón
         marcador.addListener('mouseout', function() {
             infoWindow.close();
@@ -121,6 +114,7 @@
         console.error('Error al cargar la API de Google Maps:', error);
     });
 </script>
+
 
 
 
