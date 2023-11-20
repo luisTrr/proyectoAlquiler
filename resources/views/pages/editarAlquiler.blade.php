@@ -187,7 +187,7 @@
 
 @endsection
 <script>
-    function setEditModalId(id) {
+    function setDeleteModalId(id) {
         document.getElementById('id').value = id;
 
         const eliminarButton = document.querySelector('.eliminar');
